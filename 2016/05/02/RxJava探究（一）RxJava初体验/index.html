@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="RxJava," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="为什么要写博客大约在10年前吧也就是2006年当时自己刚上大一，博客刚刚兴起，什么QQ空间、新浪博客风靡一时，虽说大学不是学的计算机专业，但自己总觉得自己要用电脑写点什么，毕竟高中时候的作文比赛是没少得奖，自己也就在新浪上开了自己的博客，当时还信誓旦旦的说每周不少于多少篇，要记录自己的每个瞬间，以后有个回忆的资本。然而事与愿违，大学四年基本上荒废了自己，游戏废掉了自己。没错写博客就是要实现自己10">
+<meta name="description" content="RxJava是什么最近Android社区中，RxJava可算是非常火，以至于你不会RxJava就不好意思说你是一个Android开发工程师，本着学习的态度，来体验一下RxJava。
+RxJava是一种响应式编程，基于观察者模式（于观察者模式稍稍有差别）在处理异步回调时有着得天独厚的优势，在处理复杂的列表过滤、变化、转换等时，RxJava为我们提供了全新的思想。
+如何使用RxJavaGradle中引">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建hexo博客（一）写在前面">
-<meta property="og:url" content="http://forevercoder.com/2015/12/17/搭建hexo博客/index.html">
+<meta property="og:title" content="RxJava探究（一）RxJava初体验">
+<meta property="og:url" content="http://forevercoder.com/2016/05/02/RxJava探究（一）RxJava初体验/index.html">
 <meta property="og:site_name" content="ForeverCoder's Blog">
-<meta property="og:description" content="为什么要写博客大约在10年前吧也就是2006年当时自己刚上大一，博客刚刚兴起，什么QQ空间、新浪博客风靡一时，虽说大学不是学的计算机专业，但自己总觉得自己要用电脑写点什么，毕竟高中时候的作文比赛是没少得奖，自己也就在新浪上开了自己的博客，当时还信誓旦旦的说每周不少于多少篇，要记录自己的每个瞬间，以后有个回忆的资本。然而事与愿违，大学四年基本上荒废了自己，游戏废掉了自己。没错写博客就是要实现自己10">
-<meta property="og:updated_time" content="2015-12-19T05:38:53.000Z">
+<meta property="og:description" content="RxJava是什么最近Android社区中，RxJava可算是非常火，以至于你不会RxJava就不好意思说你是一个Android开发工程师，本着学习的态度，来体验一下RxJava。
+RxJava是一种响应式编程，基于观察者模式（于观察者模式稍稍有差别）在处理异步回调时有着得天独厚的优势，在处理复杂的列表过滤、变化、转换等时，RxJava为我们提供了全新的思想。
+如何使用RxJavaGradle中引">
+<meta property="og:updated_time" content="2016-06-19T08:00:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建hexo博客（一）写在前面">
-<meta name="twitter:description" content="为什么要写博客大约在10年前吧也就是2006年当时自己刚上大一，博客刚刚兴起，什么QQ空间、新浪博客风靡一时，虽说大学不是学的计算机专业，但自己总觉得自己要用电脑写点什么，毕竟高中时候的作文比赛是没少得奖，自己也就在新浪上开了自己的博客，当时还信誓旦旦的说每周不少于多少篇，要记录自己的每个瞬间，以后有个回忆的资本。然而事与愿违，大学四年基本上荒废了自己，游戏废掉了自己。没错写博客就是要实现自己10">
+<meta name="twitter:title" content="RxJava探究（一）RxJava初体验">
+<meta name="twitter:description" content="RxJava是什么最近Android社区中，RxJava可算是非常火，以至于你不会RxJava就不好意思说你是一个Android开发工程师，本着学习的态度，来体验一下RxJava。
+RxJava是一种响应式编程，基于观察者模式（于观察者模式稍稍有差别）在处理异步回调时有着得天独厚的优势，在处理复杂的列表过滤、变化、转换等时，RxJava为我们提供了全新的思想。
+如何使用RxJavaGradle中引">
 
 
 
@@ -114,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://forevercoder.com/2015/12/17/搭建hexo博客/"/>
+  <link rel="canonical" href="http://forevercoder.com/2016/05/02/RxJava探究（一）RxJava初体验/"/>
 
-  <title> 搭建hexo博客（一）写在前面 | ForeverCoder's Blog </title>
+  <title> RxJava探究（一）RxJava初体验 | ForeverCoder's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +272,7 @@
             
             
               
-                搭建hexo博客（一）写在前面
+                RxJava探究（一）RxJava初体验
               
             
           </h1>
@@ -278,8 +284,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-17T22:38:33+08:00" content="2015-12-17">
-              2015-12-17
+            <time itemprop="dateCreated" datetime="2016-05-02T22:15:47+08:00" content="2016-05-02">
+              2016-05-02
             </time>
           </span>
 
@@ -292,20 +298,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hexo搭建个人博客/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo搭建个人博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hexo搭建个人博客/个人随感/" itemprop="url" rel="index">
-                    <span itemprop="name">个人随感</span>
+                  <a href="/categories/RxJava探究/" itemprop="url" rel="index">
+                    <span itemprop="name">RxJava探究</span>
                   </a>
                 </span>
 
@@ -320,8 +314,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/17/搭建hexo博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/搭建hexo博客/" itemprop="commentsCount"></span>
+                <a href="/2016/05/02/RxJava探究（一）RxJava初体验/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/02/RxJava探究（一）RxJava初体验/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -331,7 +325,7 @@
 
           
           
-             <span id="/2015/12/17/搭建hexo博客/" class="leancloud_visitors" data-flag-title="搭建hexo博客（一）写在前面">
+             <span id="/2016/05/02/RxJava探究（一）RxJava初体验/" class="leancloud_visitors" data-flag-title="RxJava探究（一）RxJava初体验">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -353,9 +347,13 @@
       
 
       
-        <h2 id="为什么要写博客"><a href="#为什么要写博客" class="headerlink" title="为什么要写博客"></a>为什么要写博客</h2><p>大约在10年前吧也就是2006年当时自己刚上大一，博客刚刚兴起，什么QQ空间、新浪博客风靡一时，虽说大学不是学的计算机专业，但自己总觉得自己要用电脑写点什么，毕竟高中时候的作文比赛是没少得奖，自己也就在新浪上开了自己的博客，当时还信誓旦旦的说每周不少于多少篇，要记录自己的每个瞬间，以后有个回忆的资本。然而事与愿违，大学四年基本上荒废了自己，游戏废掉了自己。没错写博客就是要实现自己10年前的愿望，重拾自己，抓住青春的尾巴，给自己一个交代。</p>
-<h2 id="为什么要用hexo搭建博客"><a href="#为什么要用hexo搭建博客" class="headerlink" title="为什么要用hexo搭建博客"></a>为什么要用hexo搭建博客</h2><p>之前考虑过CSDN，图省事，但作为程序猿来说，喜欢捣腾反而使得写博客更加有趣，加上markdown语法的支持，写博客就像编程序一样有条不紊，总结起来就是自己喜欢瞎搞(~~~)。<br><a id="more"></a></p>
-<h2 id="关于坚持"><a href="#关于坚持" class="headerlink" title="关于坚持"></a>关于坚持</h2><p>这曾经对我来说不算是个事，但是大学的荒废使得这个事很严重了，很多事自己没能坚持下来，现在就是个loser。不能这样下去，要改变做回从前的自己。这里一开始给自己定个目标吧，最低要求是每个星期之间博文不能断，即就是每周至少要产出一篇博文。</p>
+        <h2 id="RxJava是什么"><a href="#RxJava是什么" class="headerlink" title="RxJava是什么"></a>RxJava是什么</h2><p>最近Android社区中，RxJava可算是非常火，以至于你不会RxJava就不好意思说你是一个Android开发工程师，本着学习的态度，来体验一下RxJava。</p>
+<p>RxJava是一种响应式编程，基于观察者模式（于观察者模式稍稍有差别）在处理异步回调时有着得天独厚的优势，在处理复杂的列表过滤、变化、转换等时，RxJava为我们提供了全新的思想。</p>
+<h2 id="如何使用RxJava"><a href="#如何使用RxJava" class="headerlink" title="如何使用RxJava"></a>如何使用RxJava</h2><h3 id="Gradle中引入"><a href="#Gradle中引入" class="headerlink" title="Gradle中引入"></a>Gradle中引入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'io.reactivex:rxjava:1.1.0'</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建被观察者、事件源Observable"><a href="#创建被观察者、事件源Observable" class="headerlink" title="创建被观察者、事件源Observable"></a>创建被观察者、事件源Observable</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//被观察者，事件源</span></span><br><span class="line">Observable&lt;String&gt; myObservable = Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> String&gt; subscriber)</span> </span>&#123;</span><br><span class="line">             subscriber.onNext(<span class="string">"Hello world!"</span>);</span><br><span class="line">             subscriber.onCompleted();</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="创建订阅者、观察者对象Subscriber"><a href="#创建订阅者、观察者对象Subscriber" class="headerlink" title="创建订阅者、观察者对象Subscriber"></a>创建订阅者、观察者对象Subscriber</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//订阅者</span></span><br><span class="line">Subscriber&lt;String&gt; mySubscriber = <span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">                System.out.println(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="关联观察者和被观察者，即就是让被观察者订阅观察者对象"><a href="#关联观察者和被观察者，即就是让被观察者订阅观察者对象" class="headerlink" title="关联观察者和被观察者，即就是让被观察者订阅观察者对象"></a>关联观察者和被观察者，即就是让被观察者订阅观察者对象</h3><p>通过subscribe方法建立观察者和被观察者之间的联系</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myObservable.subscribe(mySubscriber);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -377,7 +375,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/tags/RxJava/" rel="tag">#RxJava</a>
           
         </div>
       
@@ -386,13 +384,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/12/28/Android自定义控件之旅（一）滑动开关/" rel="next" title="Android自定义控件之旅（一）滑动开关">
+                <i class="fa fa-chevron-left"></i> Android自定义控件之旅（一）滑动开关
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/20/搭建hexo博客（二）准备工作/" rel="prev" title="搭建hexo博客（二）准备工作">
-                搭建hexo博客（二）准备工作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -407,10 +405,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/12/17/搭建hexo博客/"
-     data-title="搭建hexo博客（一）写在前面"
+        <div class="ds-share flat" data-thread-key="2016/05/02/RxJava探究（一）RxJava初体验/"
+     data-title="RxJava探究（一）RxJava初体验"
      data-content=""
-     data-url="http://forevercoder.com/2015/12/17/搭建hexo博客/">
+     data-url="http://forevercoder.com/2016/05/02/RxJava探究（一）RxJava初体验/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -437,8 +435,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/17/搭建hexo博客/"
-           data-title="搭建hexo博客（一）写在前面" data-url="http://forevercoder.com/2015/12/17/搭建hexo博客/">
+      <div class="ds-thread" data-thread-key="2016/05/02/RxJava探究（一）RxJava初体验/"
+           data-title="RxJava探究（一）RxJava初体验" data-url="http://forevercoder.com/2016/05/02/RxJava探究（一）RxJava初体验/">
       </div>
     
   </div>
@@ -529,7 +527,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要写博客"><span class="nav-number">1.</span> <span class="nav-text">为什么要写博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用hexo搭建博客"><span class="nav-number">2.</span> <span class="nav-text">为什么要用hexo搭建博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于坚持"><span class="nav-number">3.</span> <span class="nav-text">关于坚持</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava是什么"><span class="nav-number">1.</span> <span class="nav-text">RxJava是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用RxJava"><span class="nav-number">2.</span> <span class="nav-text">如何使用RxJava</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle中引入"><span class="nav-number">2.1.</span> <span class="nav-text">Gradle中引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建被观察者、事件源Observable"><span class="nav-number">2.2.</span> <span class="nav-text">创建被观察者、事件源Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建订阅者、观察者对象Subscriber"><span class="nav-number">2.3.</span> <span class="nav-text">创建订阅者、观察者对象Subscriber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联观察者和被观察者，即就是让被观察者订阅观察者对象"><span class="nav-number">2.4.</span> <span class="nav-text">关联观察者和被观察者，即就是让被观察者订阅观察者对象</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
