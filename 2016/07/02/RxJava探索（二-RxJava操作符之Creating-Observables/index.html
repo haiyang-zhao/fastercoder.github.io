@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="Rxjava," />
 
 
 
@@ -84,22 +84,21 @@
 
 
 
-<meta name="description" content="安装homebrewhomebrew是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。打开终端输入以下命令即可完成安装：
-ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
-安装nodejshoewbrew">
+<meta name="description" content="RxJava的强大之处就是他提供非常丰富的操作符，超过上百种，这些操作符给我们解决问题带来很多方便。本文主要讲解创建Observale对象一类的操作符，参照官方文档 http://reactivex.io/documentation/operators.html#creating。
+CreateObservable.create()方法用于创建一个Observale对象，该方法接收一个Observ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建hexo博客（二）准备工作">
-<meta property="og:url" content="http://forevercoder.com/2015/12/20/搭建hexo博客（二）准备工作/index.html">
+<meta property="og:title" content="RxJava探索（二） RxJava操作符之Creating Observables">
+<meta property="og:url" content="http://forevercoder.com/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/index.html">
 <meta property="og:site_name" content="ForeverCoder's Blog">
-<meta property="og:description" content="安装homebrewhomebrew是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。打开终端输入以下命令即可完成安装：
-ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
-安装nodejshoewbrew">
-<meta property="og:updated_time" content="2015-12-20T12:38:13.000Z">
+<meta property="og:description" content="RxJava的强大之处就是他提供非常丰富的操作符，超过上百种，这些操作符给我们解决问题带来很多方便。本文主要讲解创建Observale对象一类的操作符，参照官方文档 http://reactivex.io/documentation/operators.html#creating。
+CreateObservable.create()方法用于创建一个Observale对象，该方法接收一个Observ">
+<meta property="og:image" content="http://reactivex.io/documentation/operators/images/create.c.png">
+<meta property="og:updated_time" content="2016-07-02T06:18:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建hexo博客（二）准备工作">
-<meta name="twitter:description" content="安装homebrewhomebrew是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。打开终端输入以下命令即可完成安装：
-ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
-安装nodejshoewbrew">
+<meta name="twitter:title" content="RxJava探索（二） RxJava操作符之Creating Observables">
+<meta name="twitter:description" content="RxJava的强大之处就是他提供非常丰富的操作符，超过上百种，这些操作符给我们解决问题带来很多方便。本文主要讲解创建Observale对象一类的操作符，参照官方文档 http://reactivex.io/documentation/operators.html#creating。
+CreateObservable.create()方法用于创建一个Observale对象，该方法接收一个Observ">
+<meta name="twitter:image" content="http://reactivex.io/documentation/operators/images/create.c.png">
 
 
 
@@ -120,9 +119,9 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 
 
 
-  <link rel="canonical" href="http://forevercoder.com/2015/12/20/搭建hexo博客（二）准备工作/"/>
+  <link rel="canonical" href="http://forevercoder.com/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/"/>
 
-  <title> 搭建hexo博客（二）准备工作 | ForeverCoder's Blog </title>
+  <title> RxJava探索（二） RxJava操作符之Creating Observables | ForeverCoder's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +271,7 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
             
             
               
-                搭建hexo博客（二）准备工作
+                RxJava探索（二） RxJava操作符之Creating Observables
               
             
           </h1>
@@ -284,8 +283,8 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-20T20:03:01+08:00" content="2015-12-20">
-              2015-12-20
+            <time itemprop="dateCreated" datetime="2016-07-02T12:44:59+08:00" content="2016-07-02">
+              2016-07-02
             </time>
           </span>
 
@@ -298,8 +297,8 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hexo搭建个人博客/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo搭建个人博客</span>
+                  <a href="/categories/RxJava探索/" itemprop="url" rel="index">
+                    <span itemprop="name">RxJava探索</span>
                   </a>
                 </span>
 
@@ -314,8 +313,8 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/20/搭建hexo博客（二）准备工作/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/20/搭建hexo博客（二）准备工作/" itemprop="commentsCount"></span>
+                <a href="/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -325,7 +324,7 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 
           
           
-             <span id="/2015/12/20/搭建hexo博客（二）准备工作/" class="leancloud_visitors" data-flag-title="搭建hexo博客（二）准备工作">
+             <span id="/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/" class="leancloud_visitors" data-flag-title="RxJava探索（二） RxJava操作符之Creating Observables">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -347,23 +346,13 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
       
 
       
-        <h2 id="安装homebrew"><a href="#安装homebrew" class="headerlink" title="安装homebrew"></a>安装homebrew</h2><p>homebrew是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。打开终端输入以下命令即可完成安装：</p>
-<pre><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
-</code></pre><h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>hoewbrew安装成功后，我们就可以借助他来安装Nodejs了，输入以下命令：</p>
-<pre><code>brew install node
-</code></pre><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>使用nodejs的npm命令来安装hexo</p>
-<pre><code>npm install -g hexo-cli
-</code></pre><a id="more"></a>
-<h2 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h2><pre><code>hexo init Blog
-</code></pre><p>Blog是工程存放的文件夹，名字可以随便取</p>
-<pre><code>cd Blog
-npm install
-</code></pre><h2 id="安装git插件"><a href="#安装git插件" class="headerlink" title="安装git插件"></a>安装git插件</h2><pre><code>npm install hexo-deployer-git --save
-</code></pre><h2 id="注册GitHub"><a href="#注册GitHub" class="headerlink" title="注册GitHub"></a>注册GitHub</h2><ul>
-<li>点这里注册 <a href="https://github.com/" target="_blank" rel="external">GitHub</a> </li>
-<li>注册完成后 创建你的GitHub Pages 也就是我们博客的主页</li>
-<li>如果你的用户名为abc,则需创建名称为abc.github.io的仓库</li>
-</ul>
+        <p>RxJava的强大之处就是他提供非常丰富的操作符，超过上百种，这些操作符给我们解决问题带来很多方便。本文主要讲解创建Observale对象一类的操作符，参照官方文档 <a href="http://reactivex.io/documentation/operators.html#creating" target="_blank" rel="external">http://reactivex.io/documentation/operators.html#creating</a>。</p>
+<h3 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h3><p>Observable.create()方法用于创建一个Observale对象，该方法接收一个Observer观察者对象。</p>
+<p><img src="http://reactivex.io/documentation/operators/images/create.c.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> Integer&gt; subscriber)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (!subscriber.isUnsubscribed()) &#123;</span><br><span class="line">                       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">                           subscriber.onNext(i);</span><br><span class="line">                       &#125;</span><br><span class="line"></span><br><span class="line">                       subscriber.onCompleted();</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">                   subscriber.onError(e);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;).subscribe(<span class="keyword">new</span> Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               System.out.println(<span class="string">"completed !"</span>);</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line">               System.out.println(<span class="string">"onError "</span> + e.getMessage());</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(Integer item)</span> </span>&#123;</span><br><span class="line">               System.out.println(<span class="string">"Next "</span> + item);</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p>subscrible(subscriber)方法调用后会执行OnSubscribe对象的call(subscriber)方法，从而完成回调。<br>打印结果如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Next 1</span><br><span class="line">   Next 2</span><br><span class="line">   Next 3</span><br><span class="line">   Next 4</span><br><span class="line">   completed !</span><br></pre></td></tr></table></figure>
+<p>### </p>
 
       
     </div>
@@ -385,7 +374,7 @@ npm install
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/tags/Rxjava/" rel="tag">#Rxjava</a>
           
         </div>
       
@@ -394,17 +383,13 @@ npm install
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/17/搭建hexo博客/" rel="next" title="搭建hexo博客（一）写在前面">
-                <i class="fa fa-chevron-left"></i> 搭建hexo博客（一）写在前面
+              <a href="/2016/05/02/RxJava探究（一）RxJava初体验/" rel="next" title="RxJava探究（一）RxJava初体验">
+                <i class="fa fa-chevron-left"></i> RxJava探究（一）RxJava初体验
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/" rel="prev" title="深入理解 scrollTo()、scrollBy()、getScrollX()">
-                深入理解 scrollTo()、scrollBy()、getScrollX() <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -419,10 +404,10 @@ npm install
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/12/20/搭建hexo博客（二）准备工作/"
-     data-title="搭建hexo博客（二）准备工作"
+        <div class="ds-share flat" data-thread-key="2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/"
+     data-title="RxJava探索（二） RxJava操作符之Creating Observables"
      data-content=""
-     data-url="http://forevercoder.com/2015/12/20/搭建hexo博客（二）准备工作/">
+     data-url="http://forevercoder.com/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -449,8 +434,8 @@ npm install
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/20/搭建hexo博客（二）准备工作/"
-           data-title="搭建hexo博客（二）准备工作" data-url="http://forevercoder.com/2015/12/20/搭建hexo博客（二）准备工作/">
+      <div class="ds-thread" data-thread-key="2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/"
+           data-title="RxJava探索（二） RxJava操作符之Creating Observables" data-url="http://forevercoder.com/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/">
       </div>
     
   </div>
@@ -541,7 +526,7 @@ npm install
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装homebrew"><span class="nav-number">1.</span> <span class="nav-text">安装homebrew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nodejs"><span class="nav-number">2.</span> <span class="nav-text">安装nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化hexo"><span class="nav-number">4.</span> <span class="nav-text">初始化hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装git插件"><span class="nav-number">5.</span> <span class="nav-text">安装git插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册GitHub"><span class="nav-number">6.</span> <span class="nav-text">注册GitHub</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create"><span class="nav-number">1.</span> <span class="nav-text">Create</span></a></li></ol></div>
             
           </div>
         </section>
