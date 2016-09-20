@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -87,7 +87,7 @@
 <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ForeverCoder's Blog">
-<meta property="og:url" content="http://forevercoder.com/tags/RxJava/index.html">
+<meta property="og:url" content="http://forevercoder.com/tags/Rxjava/index.html">
 <meta property="og:site_name" content="ForeverCoder's Blog">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -99,7 +99,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -113,9 +113,9 @@
 
 
 
-  <link rel="canonical" href="http://forevercoder.com/tags/RxJava/"/>
+  <link rel="canonical" href="http://forevercoder.com/tags/Rxjava/"/>
 
-  <title> 标签: RxJava | ForeverCoder's Blog </title>
+  <title> 标签: Rxjava | ForeverCoder's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +247,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        RxJava
+        Rxjava
         <small>标签</small>
       </h2>
     </div>
@@ -260,37 +260,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/07/03/RxJava探究（三）-RxJava操作符之Transforming-Observables/" itemprop="url">
+            <a class="post-title-link" href="/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/" itemprop="url">
               
-                <span itemprop="name">RxJava探究（三） RxJava操作符之Transforming Observables</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-03T10:54:50+08:00"
-              content="2016-07-03" >
-          07-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/05/02/RxJava探究（一）RxJava初体验/" itemprop="url">
-              
-                <span itemprop="name">RxJava探究（一）RxJava初体验</span>
+                <span itemprop="name">RxJava探究（二） RxJava操作符之Creating Observables</span>
               
             </a>
         
@@ -298,9 +270,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-05-02T22:15:47+08:00"
-              content="2016-05-02" >
-          05-02
+              datetime="2016-07-02T12:44:59+08:00"
+              content="2016-07-02" >
+          07-02
         </time>
       </div>
 
@@ -418,7 +390,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -483,6 +455,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
 
   
 
@@ -612,6 +591,37 @@
             newcounter.save(null, {
               success: function(newcounter) {
                 var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
+(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
               },
               error: function(newcounter, error) {
