@@ -34,6 +34,8 @@ compile 'io.reactivex:rxjava:1.1.0'
 定义Observable对象myObservable,只是传达一个“Hello world!”字符串就OK了，下面我们创建Subscriber来处理myObservable发出的"Hello world!"
 ### 创建订阅者、观察者对象Subscriber
 
+
+<!--more-->
 ```Java
 //订阅者
 Subscriber<String> mySubscriber = new Subscriber<String>() {
@@ -52,6 +54,7 @@ Subscriber<String> mySubscriber = new Subscriber<String>() {
                 System.out.println(s);
             }
         };
+
 ```
 定义Subscriber对象mySubscriber，打印myObservable对象发出的字符串"Hellow world!"
 ### 关联观察者和被观察者，即就是让被观察者订阅观察者对象

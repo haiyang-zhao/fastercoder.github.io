@@ -57,7 +57,7 @@ Next 3
 Next 4
 completed !
 ```
-
+<!--more-->
 ### Defer 
 观察者订阅时创建被观察者对象，对于每个观察者都会创建一个新的被观察者对象,也就是说在观察者订阅之前不创建这个Observable，为每一个观察者创建一个新的Observable。
 

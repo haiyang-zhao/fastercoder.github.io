@@ -19,7 +19,7 @@ Observable">
 Buffer顾名思义缓存的意思
 Observable">
 <meta property="og:image" content="http://reactivex.io/documentation/operators/images/buffer4.png">
-<meta property="og:updated_time" content="2016-07-03T10:35:18.000Z">
+<meta property="og:updated_time" content="2017-02-22T04:11:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava探究（三） RxJava操作符之Transforming Observables">
 <meta name="twitter:description" content="Transform类操作符，可以转换由一个Observable对象发出的对象。
@@ -187,6 +187,7 @@ Observable">
 <p><img src="http://reactivex.io/documentation/operators/images/buffer4.png" alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Observable.just(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>).buffer(<span class="number">2</span>,<span class="number">4</span>)</div><div class="line">.subscribe(<span class="keyword">new</span> Action1&lt;List&lt;Integer&gt;&gt;() &#123;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(List&lt;Integer&gt; i)</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"buffer "</span> + i);</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
 <p>每隔4个数，输出一个长度为2的集合，输出为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">buffer [1, 2]</div><div class="line">buffer [5, 6]</div><div class="line">buffer [9]</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h3 id="Observable-1"><a href="#Observable-1" class="headerlink" title="Observable"></a>Observable<list<t>&gt; buffer(long timespan, TimeUnit unit)</list<t></h3><p>周期性的订阅<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;String&gt;() &#123;  </div><div class="line">           <span class="meta">@Override</span>  </div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> String&gt; subscriber)</span> </span>&#123;  </div><div class="line">               <span class="keyword">if</span> (subscriber.isUnsubscribed()) <span class="keyword">return</span>;  </div><div class="line">               <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;  </div><div class="line">                   subscriber.onNext(<span class="string">"消息"</span> + SystemClock.elapsedRealtime());  </div><div class="line">                   SystemClock.sleep(<span class="number">2000</span>);<span class="comment">//每隔2s发送消息  </span></div><div class="line">               &#125;  </div><div class="line">  </div><div class="line">           &#125;  </div><div class="line">       &#125;).subscribeOn(Schedulers.io()).  </div><div class="line">               buffer(<span class="number">3</span>, TimeUnit.SECONDS).<span class="comment">//每隔3秒 取出消息  </span></div><div class="line">               subscribe(<span class="keyword">new</span> Observer&lt;List&lt;String&gt;&gt;() &#123;  </div><div class="line">           <span class="meta">@Override</span>  </div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;  </div><div class="line">               LogUtils.d(<span class="string">"-----------------onCompleted:"</span>);  </div><div class="line">           &#125;  </div><div class="line">  </div><div class="line">           <span class="meta">@Override</span>  </div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;  </div><div class="line">               LogUtils.d(<span class="string">"-----------------&gt;onError:"</span>);  </div><div class="line">           &#125;  </div><div class="line">  </div><div class="line">           <span class="meta">@Override</span>  </div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(List&lt;String&gt; strings)</span> </span>&#123;  </div><div class="line">               LogUtils.d(<span class="string">"-----------------&gt;onNext:"</span> + strings);  </div><div class="line">           &#125;  </div><div class="line">       &#125;);</div></pre></td></tr></table></figure></p>
 <p>程序输出如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">onNext:[消息370507667, 消息370509668]</div><div class="line">onNext:[消息370511668]</div><div class="line">onNext:[消息370513669, 消息370515669]</div><div class="line">onNext:[消息370529168, 消息370531172]</div><div class="line">onNext:[消息370533184]</div><div class="line">onNext:[消息370535184, 消息370537184]</div><div class="line">onNext:[消息370539184]</div><div class="line">onNext:[消息370541185, 消息370543204]</div><div class="line">onNext:[消息370545204]</div><div class="line">onNext:[消息370547204, 消息370549204]</div><div class="line">onNext:[消息370551204]</div></pre></td></tr></table></figure>
@@ -305,15 +306,6 @@ Observable">
   
 <nav id="article-nav">
   
-    <a href="/2016/10/31/Android面试宝典（一）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Android面试宝典（一）
-        
-      </div>
-    </a>
-  
   
     <a href="/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">RxJava探究（二） RxJava操作符之Creating Observables</div>
@@ -328,7 +320,25 @@ Observable">
 
 
   
-    <div class="duoshuo"></div>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="RxJava探究（三）-RxJava操作符之Transforming-Observables" data-title="RxJava探究（三） RxJava操作符之Transforming Observables" data-url="http://forevercoder.com/2016/07/03/RxJava探究（三）-RxJava操作符之Transforming-Observables/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"forevercoder"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
 

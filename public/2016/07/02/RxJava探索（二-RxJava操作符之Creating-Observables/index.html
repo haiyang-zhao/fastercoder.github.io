@@ -20,7 +20,7 @@ CreateObservable.create()方法用于创建一个Observale对象，该方法接�
 <meta property="og:image" content="http://reactivex.io/documentation/operators/images/defer.c.png">
 <meta property="og:image" content="http://reactivex.io/documentation/operators/images/just.c.png">
 <meta property="og:image" content="http://reactivex.io/documentation/operators/images/from.c.png">
-<meta property="og:updated_time" content="2016-07-02T08:17:24.000Z">
+<meta property="og:updated_time" content="2017-02-22T04:11:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava探究（二） RxJava操作符之Creating Observables">
 <meta name="twitter:description" content="RxJava的强大之处就是他提供非常丰富的操作符，超过上百种，这些操作符给我们解决问题带来很多方便。本文主要讲解创建Observale对象一类的操作符，参照官方文档 http://reactivex.io/documentation/operators.html#creating。
@@ -187,6 +187,7 @@ CreateObservable.create()方法用于创建一个Observale对象，该方法接�
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> Integer&gt; subscriber)</span> </span>&#123;</div><div class="line">               <span class="keyword">try</span> &#123;</div><div class="line">                   <span class="keyword">if</span> (!subscriber.isUnsubscribed()) &#123;</div><div class="line">                       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">                           subscriber.onNext(i);</div><div class="line">                       &#125;</div><div class="line"></div><div class="line">                       subscriber.onCompleted();</div><div class="line">                   &#125;</div><div class="line">               &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">                   subscriber.onError(e);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;).subscribe(<span class="keyword">new</span> Subscriber&lt;Integer&gt;() &#123;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"completed !"</span>);</div><div class="line"></div><div class="line">           &#125;</div><div class="line"></div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"onError "</span> + e.getMessage());</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(Integer item)</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"Next "</span> + item);</div><div class="line"></div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
 <p>subscrible(subscriber)方法调用后会执行OnSubscribe对象的call(subscriber)方法，从而完成回调。<br>打印结果如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Next <span class="number">1</span></div><div class="line">Next <span class="number">2</span></div><div class="line">Next <span class="number">3</span></div><div class="line">Next <span class="number">4</span></div><div class="line">completed !</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="Defer"><a href="#Defer" class="headerlink" title="Defer"></a>Defer</h3><p>观察者订阅时创建被观察者对象，对于每个观察者都会创建一个新的被观察者对象,也就是说在观察者订阅之前不创建这个Observable，为每一个观察者创建一个新的Observable。</p>
 <p><img src="http://reactivex.io/documentation/operators/images/defer.c.png" alt=""></p>
 <p>如下代码：</p>
@@ -338,7 +339,25 @@ CreateObservable.create()方法用于创建一个Observale对象，该方法接�
 
 
   
-    <div class="duoshuo"></div>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="RxJava探索（二-RxJava操作符之Creating-Observables" data-title="RxJava探究（二） RxJava操作符之Creating Observables" data-url="http://forevercoder.com/2016/07/02/RxJava探索（二-RxJava操作符之Creating-Observables/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"forevercoder"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
 

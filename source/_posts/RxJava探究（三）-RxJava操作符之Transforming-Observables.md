@@ -30,7 +30,7 @@ buffer [1, 2]
 buffer [5, 6]
 buffer [9]
 ```
-
+<!--more-->
 ### Observable<List<T>> buffer(long timespan, TimeUnit unit)
 
 周期性的订阅
