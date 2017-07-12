@@ -9,11 +9,11 @@
   <title>ForeverCoder&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="ForeverCoder's Blog">
+<meta property="og:title" content="ForeverCoder&#39;s Blog">
 <meta property="og:url" content="http://forevercoder.com/index.html">
-<meta property="og:site_name" content="ForeverCoder's Blog">
+<meta property="og:site_name" content="ForeverCoder&#39;s Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ForeverCoder's Blog">
+<meta name="twitter:title" content="ForeverCoder&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="ForeverCoder&#39;s Blog" type="application/atom+xml">
   
@@ -151,6 +151,165 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ReacNative(一)基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/12/ReacNative(一)基础篇/">react native基础(一)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/12/ReacNative(一)基础篇/" class="archive-article-date">
+  	<time datetime="2017-07-12T08:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#react native</p>
+<p>##使用StyleSheet创建样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">	 &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">     &lt;/View&gt;</div><div class="line">     </div><div class="line">     </div><div class="line">    const styles = StyleSheet.create(&#123;</div><div class="line">    container: &#123;</div><div class="line">        backgroundColor: &apos;#ff0000&apos;,</div><div class="line">        flex: 1</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>##常用属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line">    container: &#123;</div><div class="line">        backgroundColor: &apos;#ff0000&apos;,//背景</div><div class="line">        flex: 1,//填满屏幕</div><div class="line">        margin: 30,//外边距</div><div class="line">        borderWidth: 10,//边框宽度</div><div class="line">        borderColor: &apos;#00ff00&apos;,//边框颜色</div><div class="line">        borderRadius: 16,//圆角半径</div><div class="line">        shadowColor: &apos;#0000ff&apos;,//阴影颜色</div><div class="line">        shadowOpacity: 0.6,//阴影透明度</div><div class="line">        shadowRadius: 5,//阴影角度</div><div class="line">        shadowOffset: &#123; //x,y偏移</div><div class="line">            height: 1,</div><div class="line">            width: 0</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/style_common_properties.png" alt="常用属性"></p>
+<p>##文字样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">  &lt;Text style=&#123;styles.text&#125;&gt;</div><div class="line">    forevercoder.com</div><div class="line">  &lt;/Text&gt;</div><div class="line">&lt;/View&gt;</div><div class="line"></div><div class="line"> text: &#123;</div><div class="line">          fontSize: 26,</div><div class="line">          color: &apos;#6435c9&apos;,</div><div class="line">          textAlign: &apos;center&apos;,</div><div class="line">          fontStyle: &apos;italic&apos;,</div><div class="line">          letterSpacing: 2,//字间距</div><div class="line">          lineHeight: 33,//行间距</div><div class="line">          fontFamily: &apos;Helvetica Neue&apos;,//字体</div><div class="line">          fontWeight: &apos;bold&apos;,//粗细</div><div class="line">          textDecorationLine: &apos;underline&apos;,//下划线 </div><div class="line">          textDecorationStyle: &apos;dashed&apos;,//  虚线</div><div class="line">          textDecorationColor: &apos;#00ffff&apos;</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react native</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/reactnative/" class="article-tag-list-link color3">react native</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/12/ReacNative(一)基础篇/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Dagger2-入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/27/Dagger2-入门/">Dagger2 初体验</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/27/Dagger2-入门/" class="archive-article-date">
+  	<time datetime="2017-02-27T09:36:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是Dagger2"><a href="#什么是Dagger2" class="headerlink" title="什么是Dagger2"></a>什么是Dagger2</h2><p>  A fast dependency injector for Android and Java.<br><br>  Dagger2起源于Dagger，是一款基于Java注解来实现的完全在编译阶段完成依赖注入的开源库，主要用于模块间解耦、提高代码的健壮性和可维护性。Dagger2在编译阶段通过apt利用Java注解自动生成Java代码，然后结合手写的代码来自动帮我们完成依赖注入的工作。</p>
+<h2 id="初步体验"><a href="#初步体验" class="headerlink" title="初步体验"></a>初步体验</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><p>  在app module的build.gradle中增加如下依赖</p>
+<pre><code>dependencies {
+        ......
+
+        compile &apos;com.google.dagger:dagger:2.x&apos;
+        annotationProcessor &apos;com.google.dagger:dagger-compiler:2.x&apos;
+</code></pre><p>   }</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Dagger2</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Dagger/" class="article-tag-list-link color2">Dagger</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/27/Dagger2-入门/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-RxJava探究（三）-RxJava操作符之Transforming-Observables" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -173,7 +332,7 @@
       
         <p>Transform类操作符，可以转换由一个Observable对象发出的对象。</p>
 <h2 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h2><p>顾名思义缓存的意思</p>
-<h3 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable<List<T>&gt; buffer(int count, int skip)</h3><p>每隔skip长度后，发出size为conut的Observable</p>
+<h3 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable<list<t>&gt; buffer(int count, int skip)</list<t></h3><p>每隔skip长度后，发出size为conut的Observable</p>
 <p><img src="http://reactivex.io/documentation/operators/images/buffer4.png" alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Observable.just(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>).buffer(<span class="number">2</span>,<span class="number">4</span>)</div><div class="line">.subscribe(<span class="keyword">new</span> Action1&lt;List&lt;Integer&gt;&gt;() &#123;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(List&lt;Integer&gt; i)</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"buffer "</span> + i);</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
 <p>每隔4个数，输出一个长度为2的集合，输出为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">buffer [1, 2]</div><div class="line">buffer [5, 6]</div><div class="line">buffer [9]</div></pre></td></tr></table></figure></p>
@@ -251,7 +410,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>RxJava的强大之处就是他提供非常丰富的操作符，超过上百种，这些操作符给我们解决问题带来很多方便。本文主要讲解创建Observale对象一类的操作符，参照官方文档 <a href="http://reactivex.io/documentation/operators.html#creating">http://reactivex.io/documentation/operators.html#creating</a>。</p>
+        <p>RxJava的强大之处就是他提供非常丰富的操作符，超过上百种，这些操作符给我们解决问题带来很多方便。本文主要讲解创建Observale对象一类的操作符，参照官方文档 <a href="http://reactivex.io/documentation/operators.html#creating" target="_blank" rel="external">http://reactivex.io/documentation/operators.html#creating</a>。</p>
 <h3 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h3><p>Observable.create()方法用于创建一个Observale对象，该方法接收一个Observer观察者对象。</p>
 <p><img src="http://reactivex.io/documentation/operators/images/create.c.png" alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> Integer&gt; subscriber)</span> </span>&#123;</div><div class="line">               <span class="keyword">try</span> &#123;</div><div class="line">                   <span class="keyword">if</span> (!subscriber.isUnsubscribed()) &#123;</div><div class="line">                       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">                           subscriber.onNext(i);</div><div class="line">                       &#125;</div><div class="line"></div><div class="line">                       subscriber.onCompleted();</div><div class="line">                   &#125;</div><div class="line">               &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">                   subscriber.onError(e);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;).subscribe(<span class="keyword">new</span> Subscriber&lt;Integer&gt;() &#123;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"completed !"</span>);</div><div class="line"></div><div class="line">           &#125;</div><div class="line"></div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"onError "</span> + e.getMessage());</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(Integer item)</span> </span>&#123;</div><div class="line">               System.out.println(<span class="string">"Next "</span> + item);</div><div class="line"></div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
@@ -420,7 +579,7 @@
 </ul>
 <p><img src="http://7xppgb.com1.z0.glb.clouddn.com/static/images/use-qiniu-store-image-for-hexo/qiniu.png" alt=""></p>
 </blockquote>
-<h3 id="2-注册和安装七牛工具"><a href="#2-注册和安装七牛工具" class="headerlink" title="2.注册和安装七牛工具"></a>2.注册和安装七牛工具</h3><p>首先我们需要申请七牛账号，如果你也需要申请，请访问<a href="https://portal.qiniu.com/signup?code=3ld4kzjsl1qoi"><strong>这个链接</strong></a>，这样我可以获得更多的流量（5GB）。然后登录七牛网站，按照官网说明创建空间，比如我创建的空间是为forevercoder-blog 。创建完成后会给你分配个七牛域名比如我的是：</p>
+<h3 id="2-注册和安装七牛工具"><a href="#2-注册和安装七牛工具" class="headerlink" title="2.注册和安装七牛工具"></a>2.注册和安装七牛工具</h3><p>首先我们需要申请七牛账号，如果你也需要申请，请访问<a href="https://portal.qiniu.com/signup?code=3ld4kzjsl1qoi" target="_blank" rel="external"><strong>这个链接</strong></a>，这样我可以获得更多的流量（5GB）。然后登录七牛网站，按照官网说明创建空间，比如我创建的空间是为forevercoder-blog 。创建完成后会给你分配个七牛域名比如我的是：</p>
 <pre><code>7xppgb.com1.z0.glb.clouddn.com
 </code></pre><p>通过该URL就可以访问你上传的资源了，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://7xppgb.com1.z0.glb.clouddn.com/static/images/use-qiniu-store-image-for-hexo/qiniu.png</div></pre></td></tr></table></figure>
@@ -903,15 +1062,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android面试</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android自定义控件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dagger2</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RxJava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android自定义控件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -924,6 +1083,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react native</a>
               </li>
             
             <div class="clearfix"></div>
