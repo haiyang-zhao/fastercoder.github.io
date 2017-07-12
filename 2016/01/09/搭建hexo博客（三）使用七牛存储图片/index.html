@@ -8,32 +8,18 @@
   <link rel="dns-prefetch" href="http://forevercoder.com">
   <title>搭建hexo博客（三）使用七牛存储图片 | ForeverCoder&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.  为何使用七牛Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链。七牛作为国内顶尖的CDN云存储商，选择他有以下几个理由
-
-
-在国内很稳定，我们公司也是选择七牛来提供云存储的
-免费提供10G存储空间，和每月10G下载流量，完全够用
-hexo有七牛">
+  <meta name="description" content="1.  为何使用七牛Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链。七牛作为国内顶尖的CDN云存储商，选择他有以下几个理由   在国内很稳定，我们公司也是选择七牛来提供云存储的 免费提供10G存储空间，和每月10G下载流量，完全够用 hexo有七牛">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建hexo博客（三）使用七牛存储图片">
 <meta property="og:url" content="http://forevercoder.com/2016/01/09/搭建hexo博客（三）使用七牛存储图片/index.html">
-<meta property="og:site_name" content="ForeverCoder's Blog">
-<meta property="og:description" content="1.  为何使用七牛Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链。七牛作为国内顶尖的CDN云存储商，选择他有以下几个理由
-
-
-在国内很稳定，我们公司也是选择七牛来提供云存储的
-免费提供10G存储空间，和每月10G下载流量，完全够用
-hexo有七牛">
+<meta property="og:site_name" content="ForeverCoder&#39;s Blog">
+<meta property="og:description" content="1.  为何使用七牛Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链。七牛作为国内顶尖的CDN云存储商，选择他有以下几个理由   在国内很稳定，我们公司也是选择七牛来提供云存储的 免费提供10G存储空间，和每月10G下载流量，完全够用 hexo有七牛">
 <meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/static/images/use-qiniu-store-image-for-hexo/qiniu.png">
 <meta property="og:updated_time" content="2016-07-02T03:23:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建hexo博客（三）使用七牛存储图片">
-<meta name="twitter:description" content="1.  为何使用七牛Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链。七牛作为国内顶尖的CDN云存储商，选择他有以下几个理由
-
-
-在国内很稳定，我们公司也是选择七牛来提供云存储的
-免费提供10G存储空间，和每月10G下载流量，完全够用
-hexo有七牛">
+<meta name="twitter:description" content="1.  为何使用七牛Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链。七牛作为国内顶尖的CDN云存储商，选择他有以下几个理由   在国内很稳定，我们公司也是选择七牛来提供云存储的 免费提供10G存储空间，和每月10G下载流量，完全够用 hexo有七牛">
 <meta name="twitter:image" content="http://7xppgb.com1.z0.glb.clouddn.com/static/images/use-qiniu-store-image-for-hexo/qiniu.png">
   
     <link rel="alternative" href="/atom.xml" title="ForeverCoder&#39;s Blog" type="application/atom+xml">

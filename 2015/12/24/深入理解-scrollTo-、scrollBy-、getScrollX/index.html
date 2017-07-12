@@ -8,18 +8,13 @@
   <link rel="dns-prefetch" href="http://forevercoder.com">
   <title>深入理解 scrollTo()、scrollBy()、getScrollX() | ForeverCoder&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。
-二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域
-
-运行时如下图：单击按钮会执行相应的方法，并弹当前">
+  <meta name="description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。 二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域  运行时如下图：单击按钮会执行相应的方法，并弹当前">
+<meta name="keywords" content="android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解 scrollTo()、scrollBy()、getScrollX()">
 <meta property="og:url" content="http://forevercoder.com/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/index.html">
-<meta property="og:site_name" content="ForeverCoder's Blog">
-<meta property="og:description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。
-二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域
-
-运行时如下图：单击按钮会执行相应的方法，并弹当前">
+<meta property="og:site_name" content="ForeverCoder&#39;s Blog">
+<meta property="og:description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。 二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域  运行时如下图：单击按钮会执行相应的方法，并弹当前">
 <meta property="og:image" content="http://img.blog.csdn.net/20150414083752720">
 <meta property="og:image" content="http://img.blog.csdn.net/20150414084317419">
 <meta property="og:image" content="http://img.blog.csdn.net/20150414091643430">
@@ -30,10 +25,7 @@
 <meta property="og:updated_time" content="2015-12-24T01:54:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解 scrollTo()、scrollBy()、getScrollX()">
-<meta name="twitter:description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。
-二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域
-
-运行时如下图：单击按钮会执行相应的方法，并弹当前">
+<meta name="twitter:description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。 二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域  运行时如下图：单击按钮会执行相应的方法，并弹当前">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20150414083752720">
   
     <link rel="alternative" href="/atom.xml" title="ForeverCoder&#39;s Blog" type="application/atom+xml">
