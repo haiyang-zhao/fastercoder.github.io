@@ -6,14 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://forevercoder.com">
-  <title>Tag: android | ForeverCoder&#39;s Blog</title>
+  <title>ReacNative基础篇(二) | ForeverCoder&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ForeverCoder&#39;s Blog">
-<meta property="og:url" content="http://forevercoder.com/tags/android/index.html">
+  <meta name="description" content="flexBox 布局与css中的flexBox布局类似，如下所示(转载网路)                                                                        弹性（Flex）宽高在组件样式中使用flex可以使其在可利用的空间中动态地扩张或收缩。一般而言我们会使用flex:1来指定某个组件扩张以撑满所有剩余的空间。如果有多个并列的子组件使">
+<meta name="keywords" content="react native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReacNative基础篇(二)">
+<meta property="og:url" content="http://forevercoder.com/2017/07/16/ReacNative基础篇 (二)/index.html">
 <meta property="og:site_name" content="ForeverCoder&#39;s Blog">
+<meta property="og:description" content="flexBox 布局与css中的flexBox布局类似，如下所示(转载网路)                                                                        弹性（Flex）宽高在组件样式中使用flex可以使其在可利用的空间中动态地扩张或收缩。一般而言我们会使用flex:1来指定某个组件扩张以撑满所有剩余的空间。如果有多个并列的子组件使">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex-direction.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex-wrap.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify-content.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/align-items.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/align-content.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex_1.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/no_flex.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex_derection_row.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/row-reverse.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex_direction_column.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/column-reverse.png">
+<meta property="og:updated_time" content="2017-07-17T14:04:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ForeverCoder&#39;s Blog">
+<meta name="twitter:title" content="ReacNative基础篇(二)">
+<meta name="twitter:description" content="flexBox 布局与css中的flexBox布局类似，如下所示(转载网路)                                                                        弹性（Flex）宽高在组件样式中使用flex可以使其在可利用的空间中动态地扩张或收缩。一般而言我们会使用flex:1来指定某个组件扩张以撑满所有剩余的空间。如果有多个并列的子组件使">
+<meta name="twitter:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex-direction.jpg">
   
     <link rel="alternative" href="/atom.xml" title="ForeverCoder&#39;s Blog" type="application/atom+xml">
   
@@ -149,71 +166,210 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ReacNative基础篇 (二)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/" class="archive-article-date">
-  	<time datetime="2015-12-24T01:35:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/">深入理解 scrollTo()、scrollBy()、getScrollX()</a>
+    <h1 class="article-title" itemprop="name">
+      ReacNative基础篇(二)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/16/ReacNative基础篇 (二)/" class="archive-article-date">
+  	<time datetime="2017-07-16T09:42:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="flexBox-布局"><a href="#flexBox-布局" class="headerlink" title="flexBox 布局"></a>flexBox 布局</h1><p>与css中的flexBox布局类似，如下所示(转载网路)</p>
+<table border="0"><br>    <tr><br>        <td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex-direction.jpg"></td><br>        <td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex-wrap.jpg"></td><br>    </tr><br>    <tr><br>        <td><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify-content.jpg"></td><br>        <td><img src="http://7xppgb.com1.z0.glb.clouddn.com/align-items.jpg"></td><br>    </tr><br>        <tr><br>        <td><img src="http://7xppgb.com1.z0.glb.clouddn.com/align-content.jpg"></td><br><br>    </tr><br></table>
+
+
+<h2 id="弹性（Flex）宽高"><a href="#弹性（Flex）宽高" class="headerlink" title="弹性（Flex）宽高"></a>弹性（Flex）宽高</h2><p>在组件样式中使用flex可以使其在可利用的空间中动态地扩张或收缩。一般而言我们会使用flex:1来指定某个组件扩张以撑满所有剩余的空间。如果有多个并列的子组件使用了flex:1，则这些子组件会平分父容器中剩余的空间。如果这些并列的子组件的flex值不一样，则谁的值更大，谁占据剩余空间的比例就更大（即占据剩余空间的比等于并列组件间flex值的比）。</p>
+<ul>
+<li>指定flex:1占满整个屏幕</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span></div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_1.png" alt="指定flex:1"></p>
+<ul>
+<li>不指定flex</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">        <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">        marginTop: <span class="number">20</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/no_flex.png" alt="指定flex:1"></p>
+<h2 id="Flex-Direction"><a href="#Flex-Direction" class="headerlink" title="Flex Direction"></a>Flex Direction</h2><p>在组件的style中指定flexDirection可以决定布局的主轴。子元素是应该沿着水平轴(row)方向排列，还是沿着竖直轴(column)方向排列呢？默认值是竖直轴(column)方向。有以下值：’row’, ‘row-reverse’, ‘column’, ‘column-reverse’</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Sample React Native App</div><div class="line"> * https://github.com/facebook/react-native</div><div class="line"> * @flow</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    AppRegistry,</div><div class="line">    StyleSheet,</div><div class="line">    Text,</div><div class="line">    View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieTalk</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    render() &#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">                &lt;Text style=&#123;styles.item1&#125;&gt;</div><div class="line">                    1</div><div class="line">                &lt;/Text&gt;</div><div class="line">                &lt;Text style=&#123;styles.item2&#125;&gt;</div><div class="line">                    2</div><div class="line">                &lt;/Text&gt;</div><div class="line">                &lt;Text style=&#123;styles.item3&#125;&gt;</div><div class="line">                    3</div><div class="line">                &lt;/Text&gt;</div><div class="line">            &lt;/View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">        <span class="attr">container</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">flexDirection</span>: <span class="string">'row'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item1</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'powderblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item2</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'skyblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'green'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item3</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'steelblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'blue'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line"></div><div class="line"></div><div class="line">    &#125;)</div><div class="line">;</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'MovieTalk'</span>, () =&gt; MovieTalk);</div></pre></td></tr></table></figure>
+<ul>
+<li>flexDirection: ‘row’</li>
+</ul>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_derection_row.png" alt=""></p>
+<ul>
+<li>flexDirection: ‘row-reverse’</li>
+</ul>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/row-reverse.png" alt=""></p>
+<ul>
+<li>flexDirection: ‘column’</li>
+</ul>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_direction_column.png" alt=""></p>
+<ul>
+<li>flexDirection: ‘column-reverse’</li>
+</ul>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/column-reverse.png" alt=""></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react native</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Android开发/" class="article-tag-list-link color5">Android开发</a>
+        			<a href="/categories/reactnative/" class="article-tag-list-link color3">react native</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://forevercoder.com/2017/07/16/ReacNative基础篇 (二)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/07/13/es6新特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">es6新特性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ReacNative基础篇 (二)" data-title="ReacNative基础篇(二)" data-url="http://forevercoder.com/2017/07/16/ReacNative基础篇 (二)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"forevercoder"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -236,9 +392,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
