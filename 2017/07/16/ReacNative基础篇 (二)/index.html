@@ -31,7 +31,11 @@
 <meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_flex-end.png">
 <meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-around.png">
 <meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-between.png">
-<meta property="og:updated_time" content="2017-07-18T04:40:22.000Z">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-start.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_center.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-end.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_stretch.png">
+<meta property="og:updated_time" content="2017-07-18T05:08:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReacNative基础篇(二)">
 <meta name="twitter:description" content="flexBox 布局与css中的flexBox布局类似，如下所示(转载网路)    弹性（Flex）宽高在组件样式中使用flex可以使其在可利用的空间中动态地扩张或收缩。一般而言我们会使用flex:1来指定某个组件扩张以撑满所有剩余的空间。如果有多个并列的子组件使用了flex:1，则这些子组件会平分父容器中剩余的空间。如果这些并列的子组件的flex值不一样，则谁的值更大，谁占据剩余空间的比例就更大">
@@ -243,6 +247,29 @@
 </tr>
 </tbody>
 </table>
+<h2 id="Align-Items"><a href="#Align-Items" class="headerlink" title="Align Items"></a>Align Items</h2><p>在组件的style中指定alignItems可以决定其子元素沿着次轴（与主轴垂直的轴，比如若主轴方向为row，则次轴方向为column）的排列方式。子元素是应该靠近次轴的起始端还是末尾段分布呢？亦或应该均匀分布？对应的这些可选项有：flex-start、center、flex-end以及stretch。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">          <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">          marginTop: <span class="number">20</span>,</div><div class="line">          <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">          <span class="attr">flexDirection</span>: <span class="string">'column'</span>,</div><div class="line">          <span class="attr">justifyContent</span>:<span class="string">'center'</span>,</div><div class="line">          <span class="attr">alignItems</span>:<span class="string">'flex-start'</span></div><div class="line"></div><div class="line">      &#125;,</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>flex-start</th>
+<th style="text-align:center">center</th>
+<th style="text-align:right">flex-end</th>
+<th style="text-align:center">stretch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-start.png" alt=""></td>
+<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_center.png" alt=""></td>
+<td style="text-align:right"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-end.png" alt=""></td>
+<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_stretch.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>注意<br>要使stretch选项生效的话，子元素在次轴方向上不能有固定的尺寸。以下面的代码为例：只有将子元素样式中的 width: 50去掉之后，alignItems: ‘stretch’才能生效。</li>
+</ul>
 
       
 
