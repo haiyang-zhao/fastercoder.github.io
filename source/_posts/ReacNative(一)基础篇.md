@@ -5,14 +5,14 @@ tags:  react native
 ---
 
 
-#react native
+# react native
 
-##使用StyleSheet创建样式
+## 使用StyleSheet创建样式
 ```
 	 <View style={styles.container}>
      </View>
-     
-     
+
+
     const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ff0000',
@@ -20,7 +20,7 @@ tags:  react native
     }
 });
 ```
-##常用属性
+## 常用属性
 
 ```
 const styles = StyleSheet.create({
@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
     }
 });
 ```
-![常用属性](http://7xppgb.com1.z0.glb.clouddn.com/style_common_properties.png)
+![常用属性](http://7xppgb.com1.z0.glb.clouddn.com/style_common_properties.png?imageView2/2/w/500/h/800/q/100)
 
-
-##文字样式
+<!-- more -->
+## 文字样式
 
 ```
   <View style={styles.container}>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
       forevercoder.com
     </Text>
   </View>
-  
+
    text: {
             fontSize: 26,
             color: '#6435c9',
@@ -68,7 +68,4 @@ const styles = StyleSheet.create({
             textDecorationColor: '#00ffff'
         }
 ```
-
-
-
-
+![文字样式](http://7xppgb.com1.z0.glb.clouddn.com/text_style.png?imageView2/2/w/500/h/800/q/100)

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="react native," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="flexBox 布局与css中的flexBox布局类似，如下所示(转载网路)">
+<meta name="keywords" content="react native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReacNative基础篇(二)">
+<meta property="og:url" content="http://forevercoder.com/2017/07/16/ReacNative基础篇 (二)/index.html">
+<meta property="og:site_name" content="ForeverCoder&#39;s Blog">
+<meta property="og:description" content="flexBox 布局与css中的flexBox布局类似，如下所示(转载网路)">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex-direction.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex-wrap.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify-content.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/align-items.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/align-content.jpg">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex_1.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/no_flex.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex_derection_row.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/row-reverse.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex_direction_column.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/column-reverse.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_flex_start.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_center.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_flex-end.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-around.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-between.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-start.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_center.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-end.png">
+<meta property="og:image" content="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_stretch.png">
+<meta property="og:updated_time" content="2018-04-22T03:22:46.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReacNative基础篇(二)">
+<meta name="twitter:description" content="flexBox 布局与css中的flexBox布局类似，如下所示(转载网路)">
+<meta name="twitter:image" content="http://7xppgb.com1.z0.glb.clouddn.com/flex-direction.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://forevercoder.com/2017/07/16/ReacNative基础篇 (二)/"/>
+
+
+
+
+
+  <title>ReacNative基础篇(二) | ForeverCoder's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?266ec7caa9a4380a1168e6984e3d97a8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ForeverCoder's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2017/07/16/ReacNative基础篇 (二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="forevercoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ForeverCoder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ReacNative基础篇(二)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-16T17:42:07+08:00">
+                2017-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">react native</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/16/ReacNative基础篇 (二)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/16/ReacNative基础篇 (二)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="flexBox-布局"><a href="#flexBox-布局" class="headerlink" title="flexBox 布局"></a>flexBox 布局</h1><p>与css中的flexBox布局类似，如下所示(转载网路)</p>
+<table class="table table-bordered table-striped table-condensed"><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex-direction.jpg"></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex-wrap.jpg"></td></tr><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify-content.jpg"></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/align-items.jpg"></td></tr><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/align-content.jpg"></td></tr></table>
+
+
+<a id="more"></a>
+<h2 id="弹性（Flex）宽高"><a href="#弹性（Flex）宽高" class="headerlink" title="弹性（Flex）宽高"></a>弹性（Flex）宽高</h2><p>在组件样式中使用flex可以使其在可利用的空间中动态地扩张或收缩。一般而言我们会使用flex:1来指定某个组件扩张以撑满所有剩余的空间。如果有多个并列的子组件使用了flex:1，则这些子组件会平分父容器中剩余的空间。如果这些并列的子组件的flex值不一样，则谁的值更大，谁占据剩余空间的比例就更大（即占据剩余空间的比等于并列组件间flex值的比）。</p>
+<ul>
+<li>指定flex:1占满整个屏幕</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span></div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_1.png" alt="指定flex:1"></p>
+<ul>
+<li>不指定flex</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">        <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">        marginTop: <span class="number">20</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/no_flex.png" alt="指定flex:1"></p>
+<h2 id="Flex-Direction"><a href="#Flex-Direction" class="headerlink" title="Flex Direction"></a>Flex Direction</h2><p>在组件的style中指定flexDirection可以决定布局的主轴。子元素是应该沿着水平轴(row)方向排列，还是沿着竖直轴(column)方向排列呢？默认值是竖直轴(column)方向。有以下值：’row’, ‘row-reverse’, ‘column’, ‘column-reverse’</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Sample React Native App</div><div class="line"> * https://github.com/facebook/react-native</div><div class="line"> * @flow</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    AppRegistry,</div><div class="line">    StyleSheet,</div><div class="line">    Text,</div><div class="line">    View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieTalk</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    render() &#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">                &lt;Text style=&#123;styles.item1&#125;&gt;</div><div class="line">                    1</div><div class="line">                &lt;/Text&gt;</div><div class="line">                &lt;Text style=&#123;styles.item2&#125;&gt;</div><div class="line">                    2</div><div class="line">                &lt;/Text&gt;</div><div class="line">                &lt;Text style=&#123;styles.item3&#125;&gt;</div><div class="line">                    3</div><div class="line">                &lt;/Text&gt;</div><div class="line">            &lt;/View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">        <span class="attr">container</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">flexDirection</span>: <span class="string">'row'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item1</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'powderblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item2</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'skyblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'green'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item3</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'steelblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'blue'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line"></div><div class="line"></div><div class="line">    &#125;)</div><div class="line">;</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'MovieTalk'</span>, () =&gt; MovieTalk);</div></pre></td></tr></table></figure>
+<table class="table table-bordered table-striped table-condensed"><tr><th>flexDirection: ‘row’</th><th>flexDirection: ‘row-reverse’</th><th>flexDirection: ‘column’</th><th>flexDirection: ‘column-reverse’</th></tr><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_derection_row.png"></td><br><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/row-reverse.png" <="" td=""></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_direction_column.png"></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/column-reverse.png" <="" td=""></td></tr></table>
+
+<h2 id="Justify-Content"><a href="#Justify-Content" class="headerlink" title="Justify Content"></a>Justify Content</h2><p>在组件的style中指定justifyContent可以决定其子元素沿着主轴的排列方式。子元素是应该靠近主轴的起始端还是末尾段分布呢？亦或应该均匀分布？对应的这些可选项有：flex-start、center、flex-end、space-around以及space-between。</p>
+<ul>
+<li><p>flex-start<br>弹性项目向行头紧挨着填充。这个是默认值。第一个弹性项的main-start外边距边线被放置在该行的main-start边线，而后续弹性项依次平齐摆放。</p>
+</li>
+<li><p>flex-end<br>弹性项目向行尾紧挨着填充。第一个弹性项的main-end外边距边线被放置在该行的main-end边线，而后续弹性项依次平齐摆放。</p>
+</li>
+<li><p>center<br>弹性项目居中紧挨着填充。（如果剩余的自由空间是负的，则弹性项目将在两个方向上同时溢出）。</p>
+</li>
+<li><p>space-between<br>弹性项目平均分布在该行上。如果剩余空间为负或者只有一个弹性项，则该值等同于flex-start。否则，第1个弹性项的外边距和行的main-start边线对齐，而最后1个弹性项的外边距和行的main-end边线对齐，然后剩余的弹性项分布在该行上，相邻项目的间隔相等。</p>
+</li>
+<li>space-around<br>弹性项目平均分布在该行上，两边留有一半的间隔空间。如果剩余空间为负或者只有一个弹性项，则该值等同于center。否则，弹性项目沿该行分布，且彼此间隔相等（比如是20px），同时首尾两边和弹性容器之间留有一半的间隔（1/2*20px=10px）。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">flexDirection</span>: <span class="string">'row'</span>,</div><div class="line">            <span class="attr">justifyContent</span>:<span class="string">'flex-start'</span></div><div class="line"></div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>flex-start</th>
+<th style="text-align:center">center</th>
+<th style="text-align:right">flex-end</th>
+<th style="text-align:center">space-around</th>
+<th style="text-align:center">space-between</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_flex_start.png" alt=""></td>
+<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_center.png" alt=""></td>
+<td style="text-align:right"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_flex-end.png" alt=""></td>
+<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-around.png" alt=""></td>
+<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-between.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Align-Items"><a href="#Align-Items" class="headerlink" title="Align Items"></a>Align Items</h2><p>在组件的style中指定alignItems可以决定其子元素沿着次轴（与主轴垂直的轴，比如若主轴方向为row，则次轴方向为column）的排列方式。子元素是应该靠近次轴的起始端还是末尾段分布呢？亦或应该均匀分布？对应的这些可选项有：flex-start、center、flex-end以及stretch。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">          <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">          marginTop: <span class="number">20</span>,</div><div class="line">          <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">          <span class="attr">flexDirection</span>: <span class="string">'column'</span>,</div><div class="line">          <span class="attr">justifyContent</span>:<span class="string">'center'</span>,</div><div class="line">          <span class="attr">alignItems</span>:<span class="string">'flex-start'</span></div><div class="line"></div><div class="line">      &#125;,</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>flex-start</th>
+<th style="text-align:center">center</th>
+<th style="text-align:right">flex-end</th>
+<th style="text-align:center">stretch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-start.png" alt=""></td>
+<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_center.png" alt=""></td>
+<td style="text-align:right"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-end.png" alt=""></td>
+<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_stretch.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>注意<br>要使stretch选项生效的话，子元素在次轴方向上不能有固定的尺寸。以下面的代码为例：只有将子元素样式中的 width: 50去掉之后，alignItems: ‘stretch’才能生效。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag"># react native</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/13/es6新特性/" rel="next" title="es6新特性">
+                <i class="fa fa-chevron-left"></i> es6新特性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/Vue2-0-一-基础指令/" rel="prev" title="Vue2.0(一)基础指令">
+                Vue2.0(一)基础指令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2017/07/16/ReacNative基础篇 (二)/"
+           data-title="ReacNative基础篇(二)" data-url="http://forevercoder.com/2017/07/16/ReacNative基础篇 (二)/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">forevercoder</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#flexBox-布局"><span class="nav-number">1.</span> <span class="nav-text">flexBox 布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#弹性（Flex）宽高"><span class="nav-number">1.1.</span> <span class="nav-text">弹性（Flex）宽高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex-Direction"><span class="nav-number">1.2.</span> <span class="nav-text">Flex Direction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Justify-Content"><span class="nav-number">1.3.</span> <span class="nav-text">Justify Content</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Align-Items"><span class="nav-number">1.4.</span> <span class="nav-text">Align Items</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">forevercoder</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"forevercoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
