@@ -151,6 +151,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Vue2-0-一-基础指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/22/Vue2-0-一-基础指令/">Vue2.0(一)基础指令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/22/Vue2-0-一-基础指令/" class="archive-article-date">
+  	<time datetime="2018-04-22T02:59:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>官方 <a href="https://cn.vuejs.org" target="_blank" rel="external">https://cn.vuejs.org</a></li>
+<li>下载vue.js<ul>
+<li>开发环境：包含完整的警告和调试模式</li>
+<li>生产环境：删除了警告，30.90KB min+gzip</li>
+</ul>
+</li>
+<li><p>引入项目</p>
+<ul>
+<li><p>CDN  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接在script中引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../assets/js/vue.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/04/22/Vue2-0-一-基础指令/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端开发/" class="article-tag-list-link color5">前端开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/22/Vue2-0-一-基础指令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-ReacNative基础篇 (二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -173,80 +265,9 @@
       
         <h1 id="flexBox-布局"><a href="#flexBox-布局" class="headerlink" title="flexBox 布局"></a>flexBox 布局</h1><p>与css中的flexBox布局类似，如下所示(转载网路)</p>
 <table class="table table-bordered table-striped table-condensed"><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex-direction.jpg"></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex-wrap.jpg"></td></tr><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify-content.jpg"></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/align-items.jpg"></td></tr><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/align-content.jpg"></td></tr></table>
-
-
-<h2 id="弹性（Flex）宽高"><a href="#弹性（Flex）宽高" class="headerlink" title="弹性（Flex）宽高"></a>弹性（Flex）宽高</h2><p>在组件样式中使用flex可以使其在可利用的空间中动态地扩张或收缩。一般而言我们会使用flex:1来指定某个组件扩张以撑满所有剩余的空间。如果有多个并列的子组件使用了flex:1，则这些子组件会平分父容器中剩余的空间。如果这些并列的子组件的flex值不一样，则谁的值更大，谁占据剩余空间的比例就更大（即占据剩余空间的比等于并列组件间flex值的比）。</p>
-<ul>
-<li>指定flex:1占满整个屏幕</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span></div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
-<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_1.png" alt="指定flex:1"></p>
-<ul>
-<li>不指定flex</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">        <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">        marginTop: <span class="number">20</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
-<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/no_flex.png" alt="指定flex:1"></p>
-<h2 id="Flex-Direction"><a href="#Flex-Direction" class="headerlink" title="Flex Direction"></a>Flex Direction</h2><p>在组件的style中指定flexDirection可以决定布局的主轴。子元素是应该沿着水平轴(row)方向排列，还是沿着竖直轴(column)方向排列呢？默认值是竖直轴(column)方向。有以下值：’row’, ‘row-reverse’, ‘column’, ‘column-reverse’</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Sample React Native App</div><div class="line"> * https://github.com/facebook/react-native</div><div class="line"> * @flow</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    AppRegistry,</div><div class="line">    StyleSheet,</div><div class="line">    Text,</div><div class="line">    View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieTalk</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    render() &#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">                &lt;Text style=&#123;styles.item1&#125;&gt;</div><div class="line">                    1</div><div class="line">                &lt;/Text&gt;</div><div class="line">                &lt;Text style=&#123;styles.item2&#125;&gt;</div><div class="line">                    2</div><div class="line">                &lt;/Text&gt;</div><div class="line">                &lt;Text style=&#123;styles.item3&#125;&gt;</div><div class="line">                    3</div><div class="line">                &lt;/Text&gt;</div><div class="line">            &lt;/View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">        <span class="attr">container</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">flexDirection</span>: <span class="string">'row'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item1</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'powderblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item2</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'skyblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'green'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">item3</span>: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'steelblue'</span>,</div><div class="line">            <span class="attr">width</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">height</span>: <span class="number">50</span>,</div><div class="line">            <span class="attr">margin</span>: <span class="number">5</span>,</div><div class="line">            <span class="attr">fontSize</span>: <span class="number">30</span>,</div><div class="line">            <span class="attr">color</span>: <span class="string">'blue'</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line"></div><div class="line"></div><div class="line">    &#125;)</div><div class="line">;</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'MovieTalk'</span>, () =&gt; MovieTalk);</div></pre></td></tr></table></figure>
-<table class="table table-bordered table-striped table-condensed"><tr><th>flexDirection: ‘row’</th><th>flexDirection: ‘row-reverse’</th><th>flexDirection: ‘column’</th><th>flexDirection: ‘column-reverse’</th></tr><tr><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_derection_row.png"></td><br><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/row-reverse.png" <="" td=""></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/flex_direction_column.png"></td><td><img src="http://7xppgb.com1.z0.glb.clouddn.com/column-reverse.png" <="" td=""></td></tr></table>
-
-<h2 id="Justify-Content"><a href="#Justify-Content" class="headerlink" title="Justify Content"></a>Justify Content</h2><p>在组件的style中指定justifyContent可以决定其子元素沿着主轴的排列方式。子元素是应该靠近主轴的起始端还是末尾段分布呢？亦或应该均匀分布？对应的这些可选项有：flex-start、center、flex-end、space-around以及space-between。</p>
-<ul>
-<li><p>flex-start<br>弹性项目向行头紧挨着填充。这个是默认值。第一个弹性项的main-start外边距边线被放置在该行的main-start边线，而后续弹性项依次平齐摆放。</p>
-</li>
-<li><p>flex-end<br>弹性项目向行尾紧挨着填充。第一个弹性项的main-end外边距边线被放置在该行的main-end边线，而后续弹性项依次平齐摆放。</p>
-</li>
-<li><p>center<br>弹性项目居中紧挨着填充。（如果剩余的自由空间是负的，则弹性项目将在两个方向上同时溢出）。</p>
-</li>
-<li><p>space-between<br>弹性项目平均分布在该行上。如果剩余空间为负或者只有一个弹性项，则该值等同于flex-start。否则，第1个弹性项的外边距和行的main-start边线对齐，而最后1个弹性项的外边距和行的main-end边线对齐，然后剩余的弹性项分布在该行上，相邻项目的间隔相等。</p>
-</li>
-<li>space-around<br>弹性项目平均分布在该行上，两边留有一半的间隔空间。如果剩余空间为负或者只有一个弹性项，则该值等同于center。否则，弹性项目沿该行分布，且彼此间隔相等（比如是20px），同时首尾两边和弹性容器之间留有一半的间隔（1/2*20px=10px）。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">            <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">            marginTop: <span class="number">20</span>,</div><div class="line">            <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">flexDirection</span>: <span class="string">'row'</span>,</div><div class="line">            <span class="attr">justifyContent</span>:<span class="string">'flex-start'</span></div><div class="line"></div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>flex-start</th>
-<th style="text-align:center">center</th>
-<th style="text-align:right">flex-end</th>
-<th style="text-align:center">space-around</th>
-<th style="text-align:center">space-between</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_flex_start.png" alt=""></td>
-<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_center.png" alt=""></td>
-<td style="text-align:right"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_flex-end.png" alt=""></td>
-<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-around.png" alt=""></td>
-<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/justify_cotent_space-between.png" alt=""> </td>
-</tr>
-</tbody>
-</table>
-<h2 id="Align-Items"><a href="#Align-Items" class="headerlink" title="Align Items"></a>Align Items</h2><p>在组件的style中指定alignItems可以决定其子元素沿着次轴（与主轴垂直的轴，比如若主轴方向为row，则次轴方向为column）的排列方式。子元素是应该靠近次轴的起始端还是末尾段分布呢？亦或应该均匀分布？对应的这些可选项有：flex-start、center、flex-end以及stretch。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">container: &#123;</div><div class="line">          <span class="attr">backgroundColor</span>: <span class="string">'#eae7ff'</span>,<span class="comment">//背景</span></div><div class="line">          marginTop: <span class="number">20</span>,</div><div class="line">          <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">          <span class="attr">flexDirection</span>: <span class="string">'column'</span>,</div><div class="line">          <span class="attr">justifyContent</span>:<span class="string">'center'</span>,</div><div class="line">          <span class="attr">alignItems</span>:<span class="string">'flex-start'</span></div><div class="line"></div><div class="line">      &#125;,</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>flex-start</th>
-<th style="text-align:center">center</th>
-<th style="text-align:right">flex-end</th>
-<th style="text-align:center">stretch</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-start.png" alt=""></td>
-<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_center.png" alt=""></td>
-<td style="text-align:right"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_flex-end.png" alt=""></td>
-<td style="text-align:center"><img src="http://7xppgb.com1.z0.glb.clouddn.com/alignItems_stretch.png" alt=""></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>注意<br>要使stretch选项生效的话，子元素在次轴方向上不能有固定的尺寸。以下面的代码为例：只有将子元素样式中的 width: 50去掉之后，alignItems: ‘stretch’才能生效。</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/07/16/ReacNative基础篇 (二)/#more">more >></a>
+        
       
 
       
@@ -323,16 +344,9 @@
 <p>var声明了一个全局变量fruit,全局范围都有效。若只在用的到代码块中有效则使用let</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">let</span> fruit = <span class="string">"zhy"</span>;</div><div class="line">    <span class="built_in">console</span>.log(fruit);<span class="comment">//zhy</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(fruit);<span class="comment">//ReferenceError: fruit is not defined</span></div></pre></td></tr></table></figure>
 <p>在let代码块外面访问时报错</p>
-<h2 id="const-声明常量"><a href="#const-声明常量" class="headerlink" title="const 声明常量"></a>const 声明常量</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//声明一个常量，声明后不能重新赋值</span></div><div class="line"><span class="keyword">const</span> fruit = <span class="string">'apple'</span>;</div><div class="line"><span class="built_in">console</span>.log(fruit);</div><div class="line"></div><div class="line"><span class="comment">//const只是限制赋值动作，并不能决定对象的值是什么</span></div><div class="line"><span class="keyword">const</span> fruits = [];</div><div class="line">fruits.push(<span class="string">'apple'</span>)</div><div class="line"><span class="built_in">console</span>.log(fruits)</div></pre></td></tr></table></figure>
-<h2 id="Destructuring-解构"><a href="#Destructuring-解构" class="headerlink" title="Destructuring 解构"></a>Destructuring 解构</h2><p>解构赋值允许你使用类似数组或对象字面量的语法将数组和对象的属性赋给各种变量,这种赋值语法极度简洁，同时还比传统的属性访问方法更为清晰</p>
-<h3 id="Array-Destructuring-数组解构"><a href="#Array-Destructuring-数组解构" class="headerlink" title="Array Destructuring 数组解构"></a>Array Destructuring 数组解构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//解构语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> [<span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'banana'</span>];</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> [breakfast1, breakfast2, breakfast3] = breakfast();</div><div class="line"><span class="built_in">console</span>.log(breakfast1, breakfast2, breakfast3) <span class="comment">//apple orange banana</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//你可以在对应位留空来跳过被解构数组中的某些元素</span></div><div class="line"><span class="keyword">let</span> [, , third] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">console</span>.log(third) <span class="comment">//3</span></div><div class="line"><span class="comment">//你还可以通过“不定参数”模式捕获数组中的所有尾随元素</span></div><div class="line"><span class="keyword">let</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="built_in">console</span>.log(tail); <span class="comment">//[ 2, 3, 4 ]</span></div><div class="line"></div><div class="line"><span class="comment">//也可以赋初始值</span></div><div class="line"><span class="keyword">let</span> [x = <span class="number">5</span>, y] = [];</div><div class="line"><span class="built_in">console</span>.log(x, y); <span class="comment">//5 undefined</span></div></pre></td></tr></table></figure>
-<h3 id="Object-Destructuring-对象解构"><a href="#Object-Destructuring-对象解构" class="headerlink" title="Object Destructuring 对象解构"></a>Object Destructuring 对象解构</h3><p>通过解构对象，你可以把它的每个属性与不同的变量绑定，首先指定被绑定的属性，然后紧跟一个要解构的变量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> personA = &#123;<span class="attr">name</span>: <span class="string">"张三"</span>&#125;;</div><div class="line"><span class="keyword">var</span> personB = &#123;<span class="attr">name</span>: <span class="string">"李四"</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;<span class="attr">name</span>: nameA&#125; = personA;</div><div class="line"><span class="keyword">let</span> &#123;<span class="attr">name</span>: nameB&#125; = personB;</div><div class="line"><span class="built_in">console</span>.log(nameA, nameB);<span class="comment">//张三 李四</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//当属性名与变量名一致时, 可以简写为</span></div><div class="line"><span class="keyword">let</span> &#123;name, age&#125; = &#123;<span class="attr">name</span>: <span class="string">'张三'</span>, <span class="attr">age</span>: <span class="number">18</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(name, age); <span class="comment">//张三 18</span></div><div class="line"></div><div class="line"><span class="comment">//可以嵌套赋值</span></div><div class="line"><span class="keyword">var</span> personC = &#123;</div><div class="line">    <span class="attr">name1</span>: <span class="string">'王五'</span>,</div><div class="line">    <span class="attr">favorite</span>: [<span class="string">'football'</span>, &#123;<span class="attr">work</span>: <span class="string">'program'</span>&#125;]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;name1, <span class="attr">favorite</span>: [first, &#123;work&#125;]&#125; = personC;</div><div class="line"><span class="built_in">console</span>.log(name1, first, work);</div></pre></td></tr></table></figure>
-<h3 id="Template-Strings-模板字符串"><a href="#Template-Strings-模板字符串" class="headerlink" title="Template Strings 模板字符串"></a>Template Strings 模板字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//模板字符串 `$&#123;表达式或变量&#125;`</span></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">'dessert'</span>, drink = <span class="string">'drink'</span>;</div><div class="line"><span class="keyword">let</span> breakfast = <span class="string">'今天的早餐是'</span> + dessert + <span class="string">'和'</span> + drink;</div><div class="line"><span class="built_in">console</span>.log(breakfast)</div><div class="line"></div><div class="line"><span class="comment">//使用字符模板表示</span></div><div class="line"><span class="keyword">let</span> myBreakfast = <span class="string">`今天的早餐是<span class="subst">$&#123;dessert&#125;</span>和<span class="subst">$&#123;drink&#125;</span>`</span>;</div><div class="line"><span class="built_in">console</span>.log(myBreakfast);</div><div class="line"></div><div class="line"><span class="comment">//可以调用函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"hello"</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`i 'am say <span class="subst">$&#123;sayHello()&#125;</span>`</span>)</div></pre></td></tr></table></figure>
-<h3 id="Tagged-template-标签模板"><a href="#Tagged-template-标签模板" class="headerlink" title="Tagged template 标签模板"></a>Tagged template 标签模板</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//标签模板</span></div><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="number">5</span>, b = <span class="number">6</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">tag</span>(<span class="params">strings, ...values</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(strings); <span class="comment">//[ 'hello ', ' world', '' ]</span></div><div class="line">    <span class="built_in">console</span>.log(values); <span class="comment">//[ 11, 30 ]</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'Hello every body'</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//标签模板函数第一个参数是字符串模板的常量数组，后面的每一个参数为表达式的计算结果，函数名称可以任意指定</span></div><div class="line"><span class="keyword">let</span> result = tag<span class="string">`hello <span class="subst">$&#123;a + b&#125;</span> world<span class="subst">$&#123;a * b&#125;</span>`</span>;</div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
-<h3 id="…操作符"><a href="#…操作符" class="headerlink" title="…操作符"></a>…操作符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//...展开操作符</span></div><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruits = [<span class="string">'apple'</span>, <span class="string">'grapes'</span>, <span class="string">'pear'</span>];</div><div class="line"><span class="built_in">console</span>.log(fruits);<span class="comment">//[ 'apple', 'grapes', 'pear' ]</span></div><div class="line"></div><div class="line"><span class="comment">//使用...展开数组</span></div><div class="line"><span class="built_in">console</span>.log(...fruits);<span class="comment">//apple grapes pear</span></div><div class="line"></div><div class="line"><span class="comment">//也可以使用...作为数组元素</span></div><div class="line"><span class="keyword">let</span> foods = [<span class="string">'cake'</span>, ...fruits];</div><div class="line"><span class="built_in">console</span>.log(foods);</div><div class="line"></div><div class="line"><span class="comment">//...此外还可以作为Rest操作符作为函数的参数表示剩余的参数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFamily</span>(<span class="params">person1, person2, ...person</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(person1, person2, person);</div><div class="line">&#125;</div><div class="line">myFamily(<span class="string">'张三'</span>, <span class="string">'李四'</span>, <span class="string">'赵五'</span>, <span class="string">'王麻子'</span>);<span class="comment">//张三 李四 [ '赵五', '王麻子' ]</span></div></pre></td></tr></table></figure>
-<h3 id="Arrow-Function-箭头函数-lambda-表达式"><a href="#Arrow-Function-箭头函数-lambda-表达式" class="headerlink" title="Arrow Function 箭头函数(lambda 表达式)"></a>Arrow Function 箭头函数(lambda 表达式)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//与lambda表达式类似</span></div><div class="line"><span class="meta"></span></div><div class="line">'use strict'</div><div class="line"></div><div class="line"><span class="comment">//在es6之前，通常这样定义和使用函数</span></div><div class="line"><span class="keyword">var</span> say = <span class="function"><span class="keyword">function</span> (<span class="params">name, word</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> name + <span class="string">' say: '</span> + word;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(say(<span class="string">'张三'</span>, <span class="string">'你好'</span>));<span class="comment">//张三 say: 你好</span></div><div class="line"></div><div class="line"><span class="comment">//使用箭头函数可以简化</span></div><div class="line"><span class="keyword">var</span> say = <span class="function">(<span class="params">name, word</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> name + <span class="string">' say: '</span> + word;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(say(<span class="string">'张三'</span>, <span class="string">'你好'</span>));<span class="comment">//张三 say: 你好</span></div><div class="line"><span class="comment">//还可以简化为</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> say = <span class="function">(<span class="params">name, word</span>) =&gt;</span> name + <span class="string">' say: '</span> + word;</div><div class="line"><span class="built_in">console</span>.log(say(<span class="string">'张三'</span>, <span class="string">'你好'</span>));<span class="comment">//张三 say: 你好</span></div><div class="line"><span class="comment">//如果没有参数可简化为</span></div><div class="line"><span class="keyword">var</span> say = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'hello world!'</span>;</div><div class="line"><span class="built_in">console</span>.log(say())</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//遍历数组大学转为小写</span></div><div class="line"><span class="keyword">let</span> words = [<span class="string">'HELLO'</span>, <span class="string">'WORLD'</span>];</div><div class="line"><span class="built_in">console</span>.log(words.map(<span class="function"><span class="params">word</span> =&gt;</span> word.toLowerCase()));<span class="comment">//[ 'hello', 'world' ]</span></div><div class="line"></div><div class="line"><span class="comment">//数组排序</span></div><div class="line"><span class="keyword">let</span> array = [<span class="number">1</span>, <span class="number">6.4</span>, <span class="number">3</span>];</div><div class="line">array.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b);</div><div class="line"><span class="built_in">console</span>.log(array);<span class="comment">//[ 1, 3, 6.4 ]</span></div><div class="line"></div><div class="line"><span class="comment">//this的作用域</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Course</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="string">""</span>;</div><div class="line">    <span class="keyword">this</span>.description = <span class="string">""</span>;</div><div class="line">    <span class="keyword">this</span>.author = <span class="string">""</span>;</div><div class="line">    <span class="keyword">this</span>.getSummary = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">", "</span> + <span class="keyword">this</span>.description;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">this</span>.getDetails = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">window</span>.setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.getSummary() + <span class="string">" "</span> + <span class="keyword">this</span>.author)</div><div class="line">        &#125;, <span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> course = <span class="keyword">new</span> Course();</div><div class="line">course.getDetails();</div><div class="line"><span class="comment">//以上，this的作用域指的是Course，而不是window。</span></div><div class="line"><span class="comment">//也就是说，lambda表达式中的this的作用域的指向取决于在哪里定义，而不是取决于在哪里使用。</span></div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2017/07/13/es6新特性/#more">more >></a>
+        
       
 
       
@@ -404,12 +418,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="react-native"><a href="#react-native" class="headerlink" title="react native"></a>react native</h1><h2 id="使用StyleSheet创建样式"><a href="#使用StyleSheet创建样式" class="headerlink" title="使用StyleSheet创建样式"></a>使用StyleSheet创建样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">	 &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">     &lt;/View&gt;</div><div class="line">     </div><div class="line">     </div><div class="line">    const styles = StyleSheet.create(&#123;</div><div class="line">    container: &#123;</div><div class="line">        backgroundColor: &apos;#ff0000&apos;,</div><div class="line">        flex: 1</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+        <h1 id="react-native"><a href="#react-native" class="headerlink" title="react native"></a>react native</h1><h2 id="使用StyleSheet创建样式"><a href="#使用StyleSheet创建样式" class="headerlink" title="使用StyleSheet创建样式"></a>使用StyleSheet创建样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">	 &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">     &lt;/View&gt;</div><div class="line"></div><div class="line"></div><div class="line">    const styles = StyleSheet.create(&#123;</div><div class="line">    container: &#123;</div><div class="line">        backgroundColor: &apos;#ff0000&apos;,</div><div class="line">        flex: 1</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h2 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line">    container: &#123;</div><div class="line">        backgroundColor: &apos;#ff0000&apos;,//背景</div><div class="line">        flex: 1,//填满屏幕</div><div class="line">        margin: 30,//外边距</div><div class="line">        borderWidth: 10,//边框宽度</div><div class="line">        borderColor: &apos;#00ff00&apos;,//边框颜色</div><div class="line">        borderRadius: 16,//圆角半径</div><div class="line">        shadowColor: &apos;#0000ff&apos;,//阴影颜色</div><div class="line">        shadowOpacity: 0.6,//阴影透明度</div><div class="line">        shadowRadius: 5,//阴影角度</div><div class="line">        shadowOffset: &#123; //x,y偏移</div><div class="line">            height: 1,</div><div class="line">            width: 0</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p><img src="http://7xppgb.com1.z0.glb.clouddn.com/style_common_properties.png?imageView2/2/w/500/h/800/q/100" alt="常用属性"></p>
-<h2 id="文字样式"><a href="#文字样式" class="headerlink" title="文字样式"></a>文字样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">  &lt;Text style=&#123;styles.text&#125;&gt;</div><div class="line">    forevercoder.com</div><div class="line">  &lt;/Text&gt;</div><div class="line">&lt;/View&gt;</div><div class="line"></div><div class="line"> text: &#123;</div><div class="line">          fontSize: 26,</div><div class="line">          color: &apos;#6435c9&apos;,</div><div class="line">          textAlign: &apos;center&apos;,</div><div class="line">          fontStyle: &apos;italic&apos;,</div><div class="line">          letterSpacing: 2,//字间距</div><div class="line">          lineHeight: 33,//行间距</div><div class="line">          fontFamily: &apos;Helvetica Neue&apos;,//字体</div><div class="line">          fontWeight: &apos;bold&apos;,//粗细</div><div class="line">          textDecorationLine: &apos;underline&apos;,//下划线 </div><div class="line">          textDecorationStyle: &apos;dashed&apos;,//  虚线</div><div class="line">          textDecorationColor: &apos;#00ffff&apos;</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
-<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/text_style.png?imageView2/2/w/500/h/800/q/100" alt="文字样式"></p>
-
+        
+          <a class="article-more-a" href="/2017/07/12/ReacNative(一)基础篇/#more">more >></a>
+        
       
 
       
@@ -965,84 +979,6 @@
 
 
   
-    <article id="post-深入理解-scrollTo-、scrollBy-、getScrollX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/">深入理解 scrollTo()、scrollBy()、getScrollX()</a>
-    </h1>
-  
-
-        
-        <a href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/" class="archive-article-date">
-  	<time datetime="2015-12-24T01:35:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、废话先说"><a href="#一、废话先说" class="headerlink" title="一、废话先说"></a>一、废话先说</h2><p>   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。</p>
-<h2 id="二、测试界面"><a href="#二、测试界面" class="headerlink" title="二、测试界面"></a>二、测试界面</h2><p> 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域</p>
-<p><img src="http://img.blog.csdn.net/20150414083752720" alt=""></p>
-<p>运行时如下图：<br><img src="http://img.blog.csdn.net/20150414084317419" alt="这里写图片描述"><br>单击按钮会执行相应的方法，并弹当前getScrollX()、getScrollY()的值 </p>
-        
-          <a class="article-more-a" href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Android开发/" class="article-tag-list-link color5">Android开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1057,7 +993,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 forevercoder
+    		&copy; 2018 forevercoder
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1144,11 +1080,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RxJava</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android自定义控件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android自定义控件</a>
+                <a href="javascript:void(0)" class="js-tag color2">RxJava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1156,11 +1092,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
