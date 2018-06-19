@@ -268,6 +268,227 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2018/06/19/Mysql-连接查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="forevercoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ForeverCoder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/19/Mysql-连接查询/" itemprop="url">Mysql 连接查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T09:40:50+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/19/Mysql-连接查询/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/06/19/Mysql-连接查询/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.runoob.com/mysql/mysql-join.html" target="_blank" rel="external">Join 查询有三种</a></p>
+<ul>
+<li>INNER JOIN （内连接|等值连接） ： 获取连个表中 满足字段匹配关系的记录，相当取交集。</li>
+<li>LEFT JOIN (左连接) ：查询左边所有值，满足所有匹配关系的记录，即使右表中没有对应的的匹配记录。</li>
+<li>RIGHT JOIN （有连接）<br>：和LEFT JOIN 相反，查询右边的所有值，即使左边中没有对应的匹配记录。</li>
+</ul>
+<p>两张表如下</p>
+<pre><code>Database changed
+MariaDB [test_db]&gt; show tables;
++-------------------+
+| Tables_in_test_db |
++-------------------+
+| runoob_tbl        |
+| tcount_tbl        |
++-------------------+
+
+
+MariaDB [test_db]&gt; select * from runoob_tbl;
++-----------+---------------+---------------+-----------------+
+| runoob_id | runoob_title  | runoob_author | submission_date |
++-----------+---------------+---------------+-----------------+
+|         1 | 学习 PHP      | 菜鸟教程      | 2017-04-12      |
+|         2 | 学习 MySQL    | 菜鸟教程      | 2017-04-12      |
+|         3 | 学习 Java     | RUNOOB.COM    | 2015-05-01      |
+|         4 | 学习 Python   | RUNOOB.COM    | 2016-03-06      |
+|         5 | 学习 C        | FK            | 2017-04-05      |
++-----------+---------------+---------------+-----------------+
+
+MariaDB [test_db]&gt; select * from tcount_tbl;
++---------------+--------------+
+| runoob_author | runoob_count |
++---------------+--------------+
+| 菜鸟教程      |           10 |
+| RUNOOB.COM    |           20 |
+| Google        |           22 |
++---------------+--------------+
+</code></pre><h4 id="INNER-JOIN-（可以使用INNER-直接使用JOIN）"><a href="#INNER-JOIN-（可以使用INNER-直接使用JOIN）" class="headerlink" title="INNER JOIN （可以使用INNER,直接使用JOIN）"></a>INNER JOIN （可以使用INNER,直接使用JOIN）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select a.runoob_id,a.runoob_title,a.runoob_author,b.runoob_count from runoob_tbl a inner join tcount_tbl b on a.runoob_author = b.runoob_author</div></pre></td></tr></table></figure>
+<pre><code>+-----------+---------------+---------------+--------------+
+| runoob_id | runoob_title  | runoob_author | runoob_count |
++-----------+---------------+---------------+--------------+
+|         1 | 学习 PHP      | 菜鸟教程      |           10 |
+|         2 | 学习 MySQL    | 菜鸟教程      |           10 |
+|         3 | 学习 Java     | RUNOOB.COM    |           20 |
+|         4 | 学习 Python   | RUNOOB.COM    |           20 |
++-----------+---------------+---------------+--------------+
+</code></pre><p>可以看出查询的记录是满足 on a.runoob_author = b.runoob_author 的交集。</p>
+<ul>
+<li>INNER JOIN 可以用等价的 WHERE子句替换。<br>等价的SQL：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select a.runoob_id,a.runoob_title,a.runoob_author,b.runoob_count from runoob_tbl a , tcount_tbl b where a.runoob_author = b.runoob_author;</div></pre></td></tr></table></figure>
+<pre><code>MariaDB [test_db]&gt; select          a.runoob_id,a.runoob_title,a.runoob_author,b.runoob_count from runoob_tbl a , tcount_tbl b where a.runoob_author = b.runoob_author;
++-----------+---------------+---------------+--------------+
+| runoob_id | runoob_title  | runoob_author | runoob_count |
++-----------+---------------+---------------+--------------+
+|         1 | 学习 PHP      | 菜鸟教程      |           10 |
+|         2 | 学习 MySQL    | 菜鸟教程      |           10 |
+|         3 | 学习 Java     | RUNOOB.COM    |           20 |
+|         4 | 学习 Python   | RUNOOB.COM    |           20 |
++-----------+---------------+---------------+--------------+
+</code></pre><h4 id="LEFT-JOIN"><a href="#LEFT-JOIN" class="headerlink" title="LEFT JOIN"></a>LEFT JOIN</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">MariaDB [test_db]&gt; select a.runoob_id,a.runoob_author,b.runoob_count from runoob_tbl a left join tcount_tbl b on  a.runoob_author = b.runoob_author;</div><div class="line">+-----------+---------------+--------------+</div><div class="line">| runoob_id | runoob_author | runoob_count |</div><div class="line">+-----------+---------------+--------------+</div><div class="line">|         1 | 菜鸟教程      |           10 |</div><div class="line">|         2 | 菜鸟教程      |           10 |</div><div class="line">|         3 | RUNOOB.COM    |           20 |</div><div class="line">|         4 | RUNOOB.COM    |           20 |</div><div class="line">|         5 | FK            |         NULL |</div><div class="line">+-----------+---------------+--------------+</div></pre></td></tr></table></figure>
+<h4 id="RIGHT-JOIN"><a href="#RIGHT-JOIN" class="headerlink" title="RIGHT JOIN"></a>RIGHT JOIN</h4><pre><code>MariaDB [test_db]&gt; select a.runoob_id,a.runoob_author,b.runoob_count from runoob_tbl a right join tcount_tbl b on  a.runoob_author = b.runoob_author;
++-----------+---------------+--------------+
+| runoob_id | runoob_author | runoob_count |
++-----------+---------------+--------------+
+|         1 | 菜鸟教程      |           10 |
+|         2 | 菜鸟教程      |           10 |
+|         3 | RUNOOB.COM    |           20 |
+|         4 | RUNOOB.COM    |           20 |
+|      NULL | NULL          |           22 |
++-----------+---------------+--------------+
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2018/04/22/Vue2-0-一-基础指令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1714,183 +1935,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2015/12/28/Android自定义控件之旅（一）滑动开关/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="forevercoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ForeverCoder's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/28/Android自定义控件之旅（一）滑动开关/" itemprop="url">Android自定义控件之旅（一）滑动开关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-28T09:33:42+08:00">
-                2015-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android开发/" itemprop="url" rel="index">
-                    <span itemprop="name">Android开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/28/Android自定义控件之旅（一）滑动开关/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/28/Android自定义控件之旅（一）滑动开关/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>我们的开关可以单击，可以滑动,效果如下图 </p>
-<p><img src="http://img.blog.csdn.net/20150407233434779" alt="这里写图片描述"></p>
-<p> 我们写自定义控件时，一般分为下面几步：</p>
-<ol>
-<li>自定义View属性。</li>
-<li>在布局文件中指定自定义属性的取值，并在View的构造方法中获取自定义属性的取值。</li>
-<li>重写onMeasure()方法。有时也可以不用重写。</li>
-<li>重写onDraw()方法。</li>
-</ol>
-<h2 id="一、自定义View属性"><a href="#一、自定义View属性" class="headerlink" title="一、自定义View属性"></a>一、自定义View属性</h2><p>1、在values下创建attrs.xml资源文件</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;resources&gt;
-&lt;attr name=&quot;btnBackground&quot; format=&quot;reference&quot; /&gt;
-&lt;attr name=&quot;btnSwitch&quot; format=&quot;reference&quot; /&gt;
-&lt;attr name=&quot;switchState&quot; format=&quot;boolean&quot; /&gt;
-&lt;declare-styleable name=&quot;CustomSwitchButton&quot;&gt;
-    &lt;attr name=&quot;btnBackground&quot; /&gt;
-    &lt;attr name=&quot;btnSwitch&quot; /&gt;
-    &lt;attr name=&quot;switchState&quot; /&gt;
-&lt;/declare-styleable&gt;
-&lt;/resources&gt;
-</code></pre><p><strong>format</strong>指定了该属性的取值类型，有string,color,demension,integer,enum,reference,float,boolean,fraction,flag;<br><strong>declare-styleable</strong> 就是我们要自定义控件的属性,name取值必须是自定义控件的类名</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/12/28/Android自定义控件之旅（一）滑动开关/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1941,7 +1985,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1952,7 +1996,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1963,7 +2007,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
