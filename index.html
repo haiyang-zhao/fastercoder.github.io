@@ -268,6 +268,363 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2018/07/10/ADB（Android-Debug-Bridge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="forevercoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ForeverCoder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/10/ADB（Android-Debug-Bridge/" itemprop="url">ADB（Android Debug Bridge)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T09:47:20+08:00">
+                2018-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/10/ADB（Android-Debug-Bridge/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/10/ADB（Android-Debug-Bridge/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/10/ADB（Android-Debug-Bridge/" class="leancloud_visitors" data-flag-title="ADB（Android Debug Bridge)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ADB（Android-Debug-Bridge"><a href="#ADB（Android-Debug-Bridge" class="headerlink" title="ADB（Android Debug Bridge)"></a>ADB（Android Debug Bridge)</h2><p>Android调试桥（adb），它是一个通用命令行工具，可以管理、调试Emulator(模拟机)或Device(安卓真机)，并且提供对 Unix shell的访问。它是一个C/S架构的应用程序，由三部分组成</p>
+<ul>
+<li>Client端 ：运行在开发机器中, 即你的开发PC机. 用来发送adb命令。</li>
+<li>Deamon守护进程 ：该组件在设备上运行命令。后台程序在每个模拟器或设备实例上作为后台进程运行。</li>
+<li>Server端 ：作为一个后台进程运行在开发机器中, 即你的开发PC机。 用来管理PC中的Client端和手机的Deamon之间的通信。</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>android_sdk/platform-tools/</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export ANDROID_HOME=/Users/zhaohaiyang/Library/Android/sdk</div><div class="line">export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</div></pre></td></tr></table></figure>
+<ul>
+<li>brew cask install android-platform-tools</li>
+</ul>
+<h2 id="adb-的工作方式"><a href="#adb-的工作方式" class="headerlink" title="adb 的工作方式"></a>adb 的工作方式</h2><ul>
+<li>启动一个 adb 客户端时，此客户端首先检查是否有已运行的 adb 服务器进程。如果没有，它将启动服务器进程。当服务器启动时，它与本地 TCP 端口 5037 绑定，并侦听从 adb 客户端发送的命令—所有 adb 客户端均使用端口 5037 与 adb 服务器通信。</li>
+<li>服务器设置与所有运行的模拟器/设备实例的连接。它通过扫描 5555 到 5585 之间（模拟器/设备使用的范围）的奇数号端口查找模拟器/设备实例。服务器一旦发现 adb 后台程序，它将设置与该端口的连接。</li>
+<li>服务器和模拟器/设备连接时使用两个(一组)端口进行。一个奇数的5555，先建立adb server与adb daemon的调试专用的连接；一个为偶数的5554，再建立与Emulator（或Device）实例的连接。<br>adb server通过扫描5555—5585之间的奇数端口搜索adb daemon，进行adb 连接；而用相应的偶数端口(奇数端口号-1，如5555对应5554)进行Emulator或Device实例的连接。<br><img src="https://upload-images.jianshu.io/upload_images/1888909-2a4a68b3d96ee4b3.png" alt="image"></li>
+</ul>
+<h2 id="开启adb调试"><a href="#开启adb调试" class="headerlink" title="开启adb调试"></a>开启adb调试</h2><ul>
+<li>在开发者选项中打开USB调试 ：Settings &gt; About phone 并点按 Build number 七次，就可以找到开发者选项。</li>
+<li>连接USB线</li>
+</ul>
+<h2 id="通过-WLAN-连接到设备"><a href="#通过-WLAN-连接到设备" class="headerlink" title="通过 WLAN 连接到设备"></a>通过 WLAN 连接到设备</h2><ul>
+<li>PC和设备连接同一WLAN。</li>
+<li>USB连接设备。</li>
+<li>设置目标设备以侦听端口 5555 上的 TCP/IP 连接。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb tcpip 5555</div></pre></td></tr></table></figure>
+<ul>
+<li><p>连接至设备，通过 IP 地址识别此设备。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb connect 192.168.3.102</div></pre></td></tr></table></figure>
+</li>
+<li><p>请确认您的主计算机已连接至目标设备：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">~ adb devices</div><div class="line">List of devices attached</div><div class="line">192.168.3.102:5555    device</div></pre></td></tr></table></figure>
+<h2 id="查询设备"><a href="#查询设备" class="headerlink" title="查询设备"></a>查询设备</h2><p>在发出 adb 命令之前，知道哪些模拟器/设备实例已连接到 adb 服务器会很有帮助。您可以使用 devices 命令生成已连接的模拟器/设备的列表</p>
+<p>adb devices</p>
+<p>输出的格式类似如下:</p>
+<p>List of devices attached<br>serial_number state</p>
+<ul>
+<li>序列号(serial_number): 一个由 adb 创建的字符串,序列号的格式为 type-console-port</li>
+<li>状态(state)</li>
+<li>offline — 实例未连接到 adb 或不响应。</li>
+<li>device — 实例现在已连接到 adb 服务器。</li>
+<li>no device — 未连接模拟器/设备。</li>
+</ul>
+<h2 id="设置端口转发"><a href="#设置端口转发" class="headerlink" title="设置端口转发"></a>设置端口转发</h2><p>使用 forward 命令设置任意端口转发 — 将对特定PC端口的请求转发到模拟器/设备实例上的其他端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb forward tcp:6100 tcp:7100 //adb forward &lt;local&gt; &lt;remote&gt;</div></pre></td></tr></table></figure>
+<h2 id="adb-命令参考"><a href="#adb-命令参考" class="headerlink" title="adb 命令参考"></a>adb 命令参考</h2><h4 id="目标设备"><a href="#目标设备" class="headerlink" title="目标设备"></a>目标设备</h4><ul>
+<li>-d : 将 adb 命令发送至唯一连接的 USB 设备,如果连接了多个 USB 设备，将返回错误。</li>
+<li>-e : 将 adb 命令发送至唯一运行的模拟器实例,如果有多个模拟器实例在运行，将返回错误。</li>
+<li><strong>-s serial_number</strong> : 连接指定的设备/模拟器。</li>
+</ul>
+<p>adb -s 192.168.3.102:5555 install …..</p>
+<h4 id="常规"><a href="#常规" class="headerlink" title="常规"></a>常规</h4><ul>
+<li>devices :</li>
+<li>help :</li>
+<li>version:</li>
+</ul>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><ul>
+<li><p><strong>logcat [option] [filter-specs]</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">adb logcat -s TAG //按TAG过滤</div><div class="line">adb logcat *:V[/D/I/W/E/F/S] //指定Level,S 表示为不输出该标签的日志</div><div class="line">adb logcat &gt; ~/log.txt //输出到文件</div><div class="line">adb logcat | grep &quot;^..Activity&quot; //正则匹配</div></pre></td></tr></table></figure>
+</li>
+<li><p>bugreport : 将 dumpsys、dumpstate 和 logcat 数据输出到屏幕，以用于报告错误。</p>
+</li>
+<li>jdwp :输出给定设备上可用的 JDWP 进程的列表。</li>
+</ul>
+<h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><ul>
+<li>install : adb install xx.apk</li>
+<li>pull : adb pull /sdcard/foo.txt foo.txt</li>
+<li>push : adb push foo.txt /sdcard/foo.txt<h4 id="端口和网络连接"><a href="#端口和网络连接" class="headerlink" title="端口和网络连接"></a>端口和网络连接</h4></li>
+<li>forward :<br>端口规范可使用以下架构：</li>
+<li>tcp:port_number</li>
+<li>local:unix_domain_socket_name</li>
+<li>dev:character_device_name</li>
+<li>jdwp:pid<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4></li>
+<li>get-serialno : 输出 adb 实例序列号字符串</li>
+<li>get-state : 输出模拟器/设备实例的 adb 状态。</li>
+<li>wait-for-device : 阻止执行，直至设备处于在线状态，即直至此实例状态为 device。</li>
+</ul>
+<p>adb wait-for-device install app.apk</p>
+<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><ul>
+<li>start-server</li>
+<li>kill-server</li>
+</ul>
+<h4 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h4><ul>
+<li><strong>shell</strong> :命令二进制文件存储在模拟器或设备的文件系统中，其路径为 /system/bin/。</li>
+<li>按 Control + D 或输入 exit 退出。</li>
+</ul>
+<h2 id="调用-Activity-Manager-am"><a href="#调用-Activity-Manager-am" class="headerlink" title="调用 Activity Manager (am)"></a>调用 Activity Manager (am)</h2><p>在 adb shell 中，可以使用 Activity Manager (am) 工具发出命令以执行各种系统操作，如启动 Activity、强行停止进程、广播 intent、修改设备屏幕属性及其他操作</p>
+<h4 id="start-options-intent"><a href="#start-options-intent" class="headerlink" title="start [options] intent"></a>start [options] intent</h4><p>启动指定启动 intent 指定的 Activity。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n wg.roomis.launcher/.splash.SplashActivity</div></pre></td></tr></table></figure></p>
+<h4 id="startservice-options-intent"><a href="#startservice-options-intent" class="headerlink" title="startservice [options] intent"></a>startservice [options] intent</h4><p>启动 intent 指定的 Service。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell</div><div class="line">su</div><div class="line">am startservice -n wg.roomis.launcher/.LauncherService -a wg.roomis.action.sync_time //需要root权限</div></pre></td></tr></table></figure></p>
+<h4 id="broadcast-options-intent"><a href="#broadcast-options-intent" class="headerlink" title="broadcast [options] intent"></a>broadcast [options] intent</h4><p>发出广播 intent。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a wg.roomis.CARD_ENTER -e CardNo &quot;A56BDEC7&quot;</div></pre></td></tr></table></figure></p>
+<h4 id="force-stop"><a href="#force-stop" class="headerlink" title="force-stop"></a>force-stop</h4><p>强行停止与 package（应用的包名称）关联的所有应用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am force-stop wg.roomis.launcher</div></pre></td></tr></table></figure></p>
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><p>终止与 package（应用的包名称）关联的所有进程。此命令仅终止可安全终止且不会影响用户体验的进程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am kill wg.roomis.launcher</div></pre></td></tr></table></figure></p>
+<h4 id="kill-all"><a href="#kill-all" class="headerlink" title="kill-all"></a>kill-all</h4><p>终止所有后台进程。</p>
+<h4 id="display-size-reset-width-height"><a href="#display-size-reset-width-height" class="headerlink" title="display-size [reset|width * height]"></a>display-size [reset|width * height]</h4><p>替换模拟器/设备显示尺寸。此命令对于在不同尺寸的屏幕上测试您的应用非常有用，它支持使用大屏设备模仿小屏幕分辨率（反之亦然）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am display-size 1280x800</div></pre></td></tr></table></figure></p>
+<h4 id="display-density-dpi"><a href="#display-density-dpi" class="headerlink" title="display-density [dpi]"></a>display-density [dpi]</h4><p>替换模拟器/设备显示密度。此命令对于在不同密度的屏幕上测试您的应用非常有用，它支持使用低密度屏幕在高密度环境环境上进行测试（反之亦然）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am display-density 480</div></pre></td></tr></table></figure></p>
+<h2 id="调用软件包管理器-Package-Manager-pm"><a href="#调用软件包管理器-Package-Manager-pm" class="headerlink" title="调用软件包管理器 Package Manager(pm)"></a>调用软件包管理器 Package Manager(pm)</h2><p>在 adb shell 中，可以使用软件包管理器 (pm) 工具发出命令，以对设备上安装的应用软件包进行操作和查询。</p>
+<h4 id="list-packages"><a href="#list-packages" class="headerlink" title="list packages"></a>list packages</h4><p>list packages [options] filter: 输出所有软件包，或者，仅输出包名称包含 filter 中的文本的软件包。</p>
+<p>选项有:</p>
+<ul>
+<li>-f：查看它们的关联文件。</li>
+<li>-d：进行过滤以仅显示已停用的软件包。</li>
+<li>-e：进行过滤以仅显示已启用的软件包。</li>
+<li>-s：进行过滤以仅显示系统软件包。</li>
+<li><strong>-3：进行过滤以仅显示第三方软件包。</strong></li>
+<li>-i：查看软件包的安装程序。</li>
+<li>-u：也包括卸载的软件包。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm list pacakges -3</div></pre></td></tr></table></figure>
+<h4 id="path"><a href="#path" class="headerlink" title="path "></a>path <package></package></h4><p>输出给定 package 的 APK 的路径。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">~ adb shell pm path wg.roomis.launcher</div><div class="line">package:/data/app/wg.roomis.launcher-2/base.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_dependencies_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_0_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_1_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_2_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_3_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_4_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_5_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_6_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_7_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_8_apk.apk</div><div class="line">package:/data/app/wg.roomis.launcher-2/split_lib_slice_9_apk.apk</div></pre></td></tr></table></figure></p>
+<h4 id="install-options"><a href="#install-options" class="headerlink" title="install [options] "></a>install [options] <path></path></h4><p>选项：</p>
+<ul>
+<li>-l：安装具有转发锁定功能的软件包。</li>
+<li><strong>-r：重新安装现有应用，保留其数据。</strong></li>
+<li>-t：允许安装测试 APK。</li>
+<li>-i installer_package_name：指定安装程序软件包名称。</li>
+<li>-s：在共享的大容量存储（如 sdcard）上安装软件包。</li>
+<li>-f：在内部系统内存上安装软件包。</li>
+<li>-d：允许版本代码降级。</li>
+<li>-g：授予应用清单中列出的所有权限。<h4 id="uninstall-options"><a href="#uninstall-options" class="headerlink" title="uninstall [options] "></a>uninstall [options] <package></package></h4>选项：</li>
+</ul>
+<p>-k：移除软件包后保留数据和缓存目录。</p>
+<h4 id="clear"><a href="#clear" class="headerlink" title="clear "></a>clear <package></package></h4><p>删除与软件包关联的所有数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm clear wg.roomis.launcher</div></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="屏幕截图-screencap"><a href="#屏幕截图-screencap" class="headerlink" title="屏幕截图 screencap "></a>屏幕截图 screencap <filename></filename></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">~ adb shell screencap /sdcard/screen.png</div><div class="line">~ adb pull /sdcard/screen.png</div></pre></td></tr></table></figure>
+<h4 id="录制视频-screenrecord-API-gt-19-Android-4-4"><a href="#录制视频-screenrecord-API-gt-19-Android-4-4" class="headerlink" title="录制视频 screenrecord (API&gt;=19 Android 4.4)"></a>录制视频 screenrecord (API&gt;=19 Android 4.4)</h4><p>screenrecord [options] <filename><br>options:</filename></p>
+<ul>
+<li>–help :显示命令语法和选项</li>
+<li>–size widthxheight :    设置视频大小：1280x720。默认值是设备的原生显示分辨率（如果支持），如果不支持，则使用 1280x720。为实现最佳结果，请使用设备的 Advanced Video Coding (AVC) 编码器支持的大小。</li>
+<li>–bit-rate <rate>:    设置视频的视频比特率（以兆比特每秒为单位）。默认值为 4Mbps。您可以增加比特率以提升视频质量，但这么做会导致影片文件变得更大。以下示例将录制比特率设为 6Mbps：</rate></li>
+</ul>
+<p>screenrecord –bit-rate 6000000 /sdcard/demo.mp4</p>
+<ul>
+<li>–time-limit <time> :设置最大录制时长（以秒为单位）。默认值和最大值均为 180（3 分钟）。</time></li>
+<li>–rotate :将输出旋转 90 度。此功能是实验性的。</li>
+<li>–verbose :显示命令行屏幕上的日志信息。如果您不设置此选项，则运行时此实用程序不会显示任何信息。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">➜  ~ adb shell screenrecord --verbose /sdcard/demo.mp4</div><div class="line">Main display is 1280x800 @57.45fps (orientation=0)</div><div class="line">Configuring recorder for 1280x800 video/avc at 4.00Mbps</div><div class="line">Content area is 1280x800 at offset x=0 y=0</div><div class="line">^C</div><div class="line">➜  ~ adb pull /sdcard/demo.mp4</div></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li>不能录音频</li>
+<li>不支持在录制时旋转屏幕</li>
+</ul>
+<h4 id="adb-shell-input"><a href="#adb-shell-input" class="headerlink" title="adb shell input"></a>adb shell input</h4><ul>
+<li>adb shell input text : 向获得焦点的EditText控件输入内容,</li>
+</ul>
+<p>adb shell input text “roomis-k12”</p>
+<ul>
+<li>adb input keyevent : 该命令主要是向系统发送一个按键指令，实现模拟用户在键盘上的按键动作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell input keyevent HOME</div><div class="line">adb shell input keyevent BACK</div><div class="line">adb shell input keyevent KEYCODE_POWER//26</div></pre></td></tr></table></figure>
+<p>KeyCode:android.view.KeyEvent.java</p>
+<ul>
+<li>adb shell input tap : 向设备发送一个点击操作的指令，参数是<x> <y>坐标</y></x></li>
+</ul>
+<p>adb shell input tap 100 100</p>
+<h4 id="adb-shell-dumpsys"><a href="#adb-shell-dumpsys" class="headerlink" title="adb shell dumpsys"></a>adb shell dumpsys</h4><ul>
+<li>adb shell dumpsys activity [activites|service|providers|intents| broadcasts|processes]</li>
+<li>adb shell dumpsys cpuinfo</li>
+<li><p>adb shell dumpsys package</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell dumpsys package wg.roomis.launcher | grep versonCode //查看版本号</div></pre></td></tr></table></figure>
+</li>
+<li><p>adb shell dumpsys window</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell dumpsys window displays //查看分辨率</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="压力测试-adb-shell-monkey"><a href="#压力测试-adb-shell-monkey" class="headerlink" title="压力测试 adb shell monkey"></a>压力测试 adb shell monkey</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell monkey -p wg.roomis.launcher -s 500 --ignore-crashes --ignore-timeouts --monitor-native-crashes -v -v 10000 &gt; ~/monkey_log.txt</div><div class="line">//产生时间序列的种子值：500 忽略程序崩溃 、 忽略超时 、 监视本地程序崩溃 、 详细信息级别为2 ， 产生 10000个事件 。</div></pre></td></tr></table></figure>
+<h2 id="ROOMIS相关"><a href="#ROOMIS相关" class="headerlink" title="ROOMIS相关"></a>ROOMIS相关</h2><h4 id="Roomis常用文件路径："><a href="#Roomis常用文件路径：" class="headerlink" title="Roomis常用文件路径："></a>Roomis常用文件路径：</h4><ul>
+<li>bindConfig文件：/sdcard/roomis/bindConfig</li>
+<li>deviceSn文件：/sdcard/roomis/deviceSn</li>
+<li>Log目录:  /sdcard/roomis/log</li>
+<li>Database文件: /data/data/wg.roomis.launcher/databases/roomisDb.db</li>
+<li>偏好文件：/data/data/wg.roomis.launcher/shared_prefs/wg.roomis.launcher_preferences.xml</li>
+<li>webview缓存目录：/data/data/wg.roomis.launcher/cache</li>
+</ul>
+<h4 id="adb命令"><a href="#adb命令" class="headerlink" title="adb命令"></a>adb命令</h4><ul>
+<li>查看设备 :adb devices</li>
+<li>连接设备：adb connect 192.168.11.255</li>
+<li>安装 adb :install rooomis.apk</li>
+<li>覆盖安装: adb install -r roomis.apk</li>
+<li>卸载:adb uninstall wg.roomis.launcher</li>
+<li>导出roomis log：adb pull  /sdcard/roomis/log/roomis.log ~/</li>
+<li>导出anr log: adb pull /data/anr/traces.txt ~/</li>
+<li>导出数据库:adb pull /data/data/wg.roomis.launcher/databases/roomisDb.db ~/</li>
+<li>模拟刷卡：adb shell am broadcast -a wg.roomis.CARD_ENTER -e CardNo “A56BDEC7”</li>
+<li>开锁：adb shell am broadcast -a wg.roomis.actions.UNLOCK_PASSWORD</li>
+<li>检查更新:adb shell am broadcast -a wg.roomis.actions.WAKE_UP_UPDATE</li>
+<li>查看版本号：adb shell dumpsys package wg.roomis.launcher | grep  versionCode</li>
+<li>同步时间：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell</div><div class="line">su</div><div class="line">am startservice -n wg.roomis.launcher/.LauncherService -a wg.roomis.action.sync_time</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="sqlite3"><a href="#sqlite3" class="headerlink" title="sqlite3"></a>sqlite3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd data/data/wg.roomis.launcher/databases</div><div class="line">sqlite3 roomisDb.db;</div><div class="line">.table</div><div class="line">select * from ApiConfigEntity;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2018/06/19/Mysql-连接查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1865,186 +2222,6 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2016/01/09/搭建hexo博客（三）使用七牛存储图片/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="forevercoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ForeverCoder's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/09/搭建hexo博客（三）使用七牛存储图片/" itemprop="url">搭建hexo博客（三）使用七牛存储图片</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-09T13:01:41+08:00">
-                2016-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo搭建个人博客/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo搭建个人博客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/01/09/搭建hexo博客（三）使用七牛存储图片/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/09/搭建hexo博客（三）使用七牛存储图片/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/01/09/搭建hexo博客（三）使用七牛存储图片/" class="leancloud_visitors" data-flag-title="搭建hexo博客（三）使用七牛存储图片">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1-为何使用七牛"><a href="#1-为何使用七牛" class="headerlink" title="1.  为何使用七牛"></a>1.  为何使用七牛</h3><p>Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链。七牛作为国内顶尖的CDN云存储商，选择他有以下几个理由</p>
-<blockquote>
-<ul>
-<li>在国内很稳定，我们公司也是选择七牛来提供云存储的</li>
-<li>免费提供10G存储空间，和每月10G下载流量，完全够用</li>
-<li>hexo有七牛的插件，使用起来也是相当的方便</li>
-</ul>
-<p><img src="http://7xppgb.com1.z0.glb.clouddn.com/static/images/use-qiniu-store-image-for-hexo/qiniu.png" alt=""></p>
-</blockquote>
-<h3 id="2-注册和安装七牛工具"><a href="#2-注册和安装七牛工具" class="headerlink" title="2.注册和安装七牛工具"></a>2.注册和安装七牛工具</h3><p>首先我们需要申请七牛账号，如果你也需要申请，请访问<a href="https://portal.qiniu.com/signup?code=3ld4kzjsl1qoi" target="_blank" rel="external"><strong>这个链接</strong></a>，这样我可以获得更多的流量（5GB）。然后登录七牛网站，按照官网说明创建空间，比如我创建的空间是为forevercoder-blog 。创建完成后会给你分配个七牛域名比如我的是：</p>
-<pre><code>7xppgb.com1.z0.glb.clouddn.com
-</code></pre><p>通过该URL就可以访问你上传的资源了，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://7xppgb.com1.z0.glb.clouddn.com/static/images/use-qiniu-store-image-for-hexo/qiniu.png</div></pre></td></tr></table></figure>
-<p>当然也可以设置自定义域名。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/01/09/搭建hexo博客（三）使用七牛存储图片/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2095,7 +2272,7 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2106,7 +2283,7 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2117,7 +2294,7 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
