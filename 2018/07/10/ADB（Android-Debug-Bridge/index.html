@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ForeverCoder&#39;s Blog">
 <meta property="og:description" content="ADB（Android Debug Bridge)Android调试桥（adb），它是一个通用命令行工具，可以管理、调试Emulator(模拟机)或Device(安卓真机)，并且提供对 Unix shell的访问。它是一个C/S架构的应用程序，由三部分组成  Client端 ：运行在开发机器中, 即你的开发PC机. 用来发送adb命令。 Deamon守护进程 ：该组件在设备上运行命令。后台程序在每">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1888909-2a4a68b3d96ee4b3.png">
-<meta property="og:updated_time" content="2018-07-10T01:49:06.013Z">
+<meta property="og:updated_time" content="2018-07-10T01:53:36.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ADB（Android Debug Bridge)">
 <meta name="twitter:description" content="ADB（Android Debug Bridge)Android调试桥（adb），它是一个通用命令行工具，可以管理、调试Emulator(模拟机)或Device(安卓真机)，并且提供对 Unix shell的访问。它是一个C/S架构的应用程序，由三部分组成  Client端 ：运行在开发机器中, 即你的开发PC机. 用来发送adb命令。 Deamon守护进程 ：该组件在设备上运行命令。后台程序在每">
@@ -397,6 +397,7 @@
 <ul>
 <li>brew cask install android-platform-tools</li>
 </ul>
+<a id="more"></a>
 <h2 id="adb-的工作方式"><a href="#adb-的工作方式" class="headerlink" title="adb 的工作方式"></a>adb 的工作方式</h2><ul>
 <li>启动一个 adb 客户端时，此客户端首先检查是否有已运行的 adb 服务器进程。如果没有，它将启动服务器进程。当服务器启动时，它与本地 TCP 端口 5037 绑定，并侦听从 adb 客户端发送的命令—所有 adb 客户端均使用端口 5037 与 adb 服务器通信。</li>
 <li>服务器设置与所有运行的模拟器/设备实例的连接。它通过扫描 5555 到 5585 之间（模拟器/设备使用的范围）的奇数号端口查找模拟器/设备实例。服务器一旦发现 adb 后台程序，它将设置与该端口的连接。</li>
