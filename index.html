@@ -268,6 +268,257 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2019/02/10/Guice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="forevercoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ForeverCoder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/10/Guice/" itemprop="url">Guice</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-10T15:34:45+08:00">
+                2019-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/10/Guice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/10/Guice/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/10/Guice/" class="leancloud_visitors" data-flag-title="Guice">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="SOLID"><a href="#SOLID" class="headerlink" title="SOLID"></a>SOLID</h3><ul>
+<li>Single responsibility   单一职责<blockquote>
+<p>a class should have only a single responsibility</p>
+</blockquote>
+</li>
+<li>Open/closed  开闭原则<blockquote>
+<p>software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification</p>
+</blockquote>
+</li>
+<li>Liskov substitution  里氏替换原则<blockquote>
+<p>objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.</p>
+</blockquote>
+</li>
+<li>Interface segregation  接口隔离<blockquote>
+<p>many client-specific interfaces are better than one general-purpose interface.</p>
+</blockquote>
+</li>
+<li>Dependency inversion   依赖倒置<blockquote>
+<p>one should depend upon abstractions, [not] concretions.</p>
+<h3 id="依赖倒置-Dependency-inversion-principle"><a href="#依赖倒置-Dependency-inversion-principle" class="headerlink" title="依赖倒置 (Dependency inversion principle)"></a>依赖倒置 (Dependency inversion principle)</h3></blockquote>
+</li>
+<li>High-level modules should not depend on low-level modules. Both should depend on abstractions.</li>
+<li>Abstractions should not depend on details.Details should depend on abstractions.</li>
+</ul>
+<h3 id="依赖注入-DI-dependency-injection"><a href="#依赖注入-DI-dependency-injection" class="headerlink" title="依赖注入   DI (dependency injection)"></a>依赖注入   DI (dependency injection)</h3><blockquote>
+<p>Dependency injection is one form of the broader technique of inversion of control（IoC）.</p>
+</blockquote>
+<ul>
+<li>Reduced Dependencies</li>
+<li>More Reusable Code</li>
+<li>More Testable Code</li>
+<li>More Readable Code</li>
+</ul>
+<h3 id="JSR330"><a href="#JSR330" class="headerlink" title="JSR330"></a><a href="https://jcp.org/en/jsr/detail?id=330" target="_blank" rel="external">JSR330</a></h3><p>JSR330在javax.inject中规定了依赖注入的标准注解(Annotations)。包括：</p>
+<ul>
+<li>@Inject : 标记为“可注入”。可用于构造器(constructors), 方法(methods)或字段(fields)</li>
+<li>@Qualifier : 限定器</li>
+<li>@Scope : 标记作用域</li>
+<li>@Named : 基于 String 的限定器</li>
+<li>@Singleton : 标记为单例</li>
+</ul>
+<h3 id="Guice"><a href="#Guice" class="headerlink" title="Guice"></a>Guice</h3><blockquote>
+<p>Guice (pronounced ‘juice’) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google.</p>
+</blockquote>
+<h4 id="Bindings"><a href="#Bindings" class="headerlink" title="Bindings"></a>Bindings</h4><ul>
+<li><p>Linked Binding</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">    bind(Printer.class).to(PdfPrinter.class);</div><div class="line">    bind(PdfPrinter.class).to(ColorPdfPrinter.class);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>BindingAnnotations</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@BindingAnnotation</span></div><div class="line"><span class="meta">@Target</span>(&#123;FIELD, PARAMETER, METHOD&#125;)</div><div class="line"><span class="meta">@Retention</span>(RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Alipay &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bind(Pay.class)</div><div class="line">.annotatedWith(Alipay.class)</div><div class="line">.to(AlipayImpl.class);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Inject</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">BillService</span><span class="params">(@Alipay Pay pay)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.pay = pay;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>Named</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">bind(Pay.class)</div><div class="line">.annotatedWith(Names.named(<span class="string">"wechat"</span>))</div><div class="line">.to(WechatPayImpl.class);</div><div class="line"></div><div class="line"><span class="meta">@Inject</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPay</span><span class="params">(@Named(<span class="string">"wechat"</span>)</span> Pay pay) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.pay = pay;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Constant Bindings</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line"><span class="meta">@Inject</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectDatabase</span><span class="params">(@Named(<span class="string">"JBDC"</span>)</span> String dbUrl) </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">bind(String.class).annotatedWith(Names.named(<span class="string">"JBDC"</span>)).toInstance(<span class="string">"jdbc:mysql://localhost:5326/emp"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>ProvidesMethods</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckVersionModule</span> <span class="keyword">extends</span> <span class="title">AbstractModule</span> </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">            bind(String.class)</div><div class="line">                    .annotatedWith(Names.named(<span class="string">"update url"</span>))</div><div class="line">                    .toInstance(<span class="string">"http://console.qa.roomis.com.cn/api/client-apps/latest"</span>);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Provides</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Request <span class="title">buildRequest</span><span class="params">(@Named(<span class="string">"update url"</span>)</span> String url) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Request.Builder()</div><div class="line">                    .url(url)</div><div class="line">                    .addHeader(<span class="string">"X-Consumer-Custom-ID"</span>, <span class="string">"roomis-k12-own"</span>)</div><div class="line">                    .addHeader(<span class="string">"deviceSn"</span>, <span class="string">"000ffd4a014f"</span>)</div><div class="line">                    .addHeader(<span class="string">"apikey"</span>, <span class="string">"0001e01807cd4a9ebab4bbb5576f1815"</span>)</div><div class="line">                    .build();</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Provides</span></div><div class="line">        <span class="function"><span class="keyword">public</span> OkHttpClient <span class="title">provideClient</span><span class="params">()</span> </span>&#123;</div><div class="line">            OkHttpClient.Builder builder = <span class="keyword">new</span> OkHttpClient.Builder();</div><div class="line">            builder.connectTimeout(<span class="number">60</span>, TimeUnit.SECONDS)</div><div class="line">                    .readTimeout(<span class="number">30</span>, TimeUnit.SECONDS)</div><div class="line">                    .writeTimeout(<span class="number">30</span>, TimeUnit.SECONDS);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> builder.build();</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>ProviderBindings</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrinterModule</span> <span class="keyword">extends</span> <span class="title">AbstractModule</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">        bind(Printer.class)</div><div class="line">                .toProvider(PrinterProvider.class);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrinterProvider</span> <span class="keyword">implements</span> <span class="title">Provider</span>&lt;<span class="title">Printer</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Printer <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PdfPrinter();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Constructor Bindings</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">_06_ConstructorBindings</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Injector injector = Guice.createInjector(<span class="keyword">new</span> TextEditorModule());</div><div class="line">        TextEditor editor = injector.getInstance(TextEditor.class);</div><div class="line">        editor.makeSpellCheck();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextEditor</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> SpellChecker spellChecker;</div><div class="line"></div><div class="line">    <span class="meta">@Inject</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TextEditor</span><span class="params">(SpellChecker spellChecker)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.spellChecker = spellChecker;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeSpellCheck</span><span class="params">()</span> </span>&#123;</div><div class="line">        spellChecker.checkSpelling();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Binding Module</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextEditorModule</span> <span class="keyword">extends</span> <span class="title">AbstractModule</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            bind(SpellChecker.class)</div><div class="line">                    .toConstructor(SpellCheckerImpl.class.getConstructor(String.class));</div><div class="line">        &#125; <span class="keyword">catch</span> (NoSuchMethodException | SecurityException e) &#123;</div><div class="line">            System.out.println(<span class="string">"Required constructor missing"</span>);</div><div class="line">        &#125;</div><div class="line">        bind(String.class)</div><div class="line">                .annotatedWith(Names.named(<span class="string">"JDBC"</span>))</div><div class="line">                .toInstance(<span class="string">"jdbc:mysql://localhost:5326/emp"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//spell checker interface</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">SpellChecker</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checkSpelling</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//spell checker implementation</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpellCheckerImpl</span> <span class="keyword">implements</span> <span class="title">SpellChecker</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String dbUrl;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SpellCheckerImpl</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SpellCheckerImpl</span><span class="params">(@Named(<span class="string">"JDBC"</span>)</span> String dbUrl) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.dbUrl = dbUrl;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkSpelling</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Start checkSpelling."</span>);</div><div class="line">        System.out.println(dbUrl);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Scopes"><a href="#Scopes" class="headerlink" title="Scopes"></a>Scopes</h4><p>默认创建新实例</p>
+<ul>
+<li>@Singleton<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Singleton</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintService</span> </span>&#123;</div><div class="line"><span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Singleton</span></div><div class="line"><span class="meta">@Provides</span></div><div class="line"><span class="function"><span class="keyword">public</span> OkHttpClient <span class="title">provideClient</span><span class="params">()</span> </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bind(Printer.class).to(PdfPrinter.class).in(Singleton.class);</div></pre></td></tr></table></figure></p>
+<p>Eager Singletons<br>立即加载<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bind(TransactionLog.class).to(InMemoryTransactionLog.class).asEagerSingleton();</div></pre></td></tr></table></figure></p>
+<ul>
+<li>@SessionScoped</li>
+<li>@RequestScoped</li>
+</ul>
+<h4 id="Injections"><a href="#Injections" class="headerlink" title="Injections"></a>Injections</h4><ul>
+<li>Constructor Injection</li>
+<li>Method Injection</li>
+<li>Field Injection<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Singleton</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintService</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Printer printer;</div><div class="line"></div><div class="line">    <span class="meta">@Inject</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PrintService</span><span class="params">(Printer printer)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.printer = printer;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//    @Inject</span></div><div class="line"><span class="comment">//    private Printer printer;</span></div><div class="line"></div><div class="line"><span class="comment">//    private Printer printer;</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//    @Inject</span></div><div class="line"><span class="comment">//    public void setPrinter(Printer printer) &#123;</span></div><div class="line"><span class="comment">//        this.printer = printer;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWork</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.printer.print();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="Dagger2"><a href="#Dagger2" class="headerlink" title="Dagger2"></a>Dagger2</h2><blockquote>
+<p>Dagger is a fully static, compile-time dependency injection framework for both Java and Android. It is an adaptation of an earlier version created by Square and now maintained by Google.</p>
+</blockquote>
+<p>why reinvent the wheel? </p>
+<blockquote>
+<p>Dagger 2 is the first to implement the full stack with generated code. </p>
+</blockquote>
+<h4 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h4><p>build.gradle</p>
+<pre><code> implementation &apos;com.google.dagger:dagger:2.20&apos;
+annotationProcessor &apos;com.google.dagger:dagger-compiler:2.20&apos;
+</code></pre><p>#### </p>
+<ul>
+<li>Inject</li>
+<li>Module</li>
+<li>Provides</li>
+<li>Component</li>
+<li>Scope</li>
+<li>Qualifier</li>
+</ul>
+<p>#<br><a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="external">https://en.wikipedia.org/wiki/SOLID</a> <br><br><a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank" rel="external">https://en.wikipedia.org/wiki/Dependency_inversion_principle</a> <br><br><a href="https://blog.csdn.net/briblue/article/details/75093382" target="_blank" rel="external">https://blog.csdn.net/briblue/article/details/75093382</a> <br><br><a href="http://tutorials.jenkov.com/dependency-injection/dependency-injection-benefits.html" target="_blank" rel="external">http://tutorials.jenkov.com/dependency-injection/dependency-injection-benefits.html</a> <br><br><a href="https://blog.csdn.net/xtayfjpk/article/details/40657781" target="_blank" rel="external">https://blog.csdn.net/xtayfjpk/article/details/40657781</a></p>
+<p><a href="https://google.github.io/dagger/" target="_blank" rel="external">https://google.github.io/dagger/</a> <br><br><a href="https://blog.csdn.net/qq_17766199/article/details/73030696" target="_blank" rel="external">https://blog.csdn.net/qq_17766199/article/details/73030696</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2018/07/10/ADB（Android-Debug-Bridge/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1872,178 +2123,6 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2016/05/02/RxJava探究（一）RxJava初体验/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="forevercoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ForeverCoder's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/05/02/RxJava探究（一）RxJava初体验/" itemprop="url">RxJava探究（一）RxJava初体验</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-02T22:15:47+08:00">
-                2016-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/RxJava探究/" itemprop="url" rel="index">
-                    <span itemprop="name">RxJava探究</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/05/02/RxJava探究（一）RxJava初体验/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/02/RxJava探究（一）RxJava初体验/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/05/02/RxJava探究（一）RxJava初体验/" class="leancloud_visitors" data-flag-title="RxJava探究（一）RxJava初体验">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="RxJava是什么"><a href="#RxJava是什么" class="headerlink" title="RxJava是什么"></a>RxJava是什么</h2><p>最近Android社区中，RxJava可算是非常火，以至于你不会RxJava就不好意思说你是一个Android开发工程师，本着学习的态度，来体验一下RxJava。</p>
-<p>RxJava是一种响应式编程，基于观察者模式（于观察者模式稍稍有差别）在处理异步回调时有着得天独厚的优势，在处理复杂的列表过滤、变化、转换等时，RxJava为我们提供了全新的思想。</p>
-<h2 id="如何使用RxJava"><a href="#如何使用RxJava" class="headerlink" title="如何使用RxJava"></a>如何使用RxJava</h2><h3 id="Gradle中引入"><a href="#Gradle中引入" class="headerlink" title="Gradle中引入"></a>Gradle中引入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'io.reactivex:rxjava:1.1.0'</span></div></pre></td></tr></table></figure>
-<h3 id="创建被观察者、事件源Observable"><a href="#创建被观察者、事件源Observable" class="headerlink" title="创建被观察者、事件源Observable"></a>创建被观察者、事件源Observable</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//被观察者，事件源</span></div><div class="line">Observable&lt;String&gt; myObservable = Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;String&gt;() &#123;</div><div class="line">         <span class="meta">@Override</span></div><div class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> String&gt; subscriber)</span> </span>&#123;</div><div class="line">             subscriber.onNext(<span class="string">"Hello world!"</span>);</div><div class="line">             subscriber.onCompleted();</div><div class="line">         &#125;</div><div class="line">     &#125;);</div></pre></td></tr></table></figure>
-<p>定义Observable对象myObservable,只是传达一个“Hello world!”字符串就OK了，下面我们创建Subscriber来处理myObservable发出的”Hello world!”</p>
-<h3 id="创建订阅者、观察者对象Subscriber"><a href="#创建订阅者、观察者对象Subscriber" class="headerlink" title="创建订阅者、观察者对象Subscriber"></a>创建订阅者、观察者对象Subscriber</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/05/02/RxJava探究（一）RxJava初体验/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2094,7 +2173,7 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2153,7 +2232,7 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
