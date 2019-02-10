@@ -268,6 +268,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2019/02/10/Dagger2（三）Subcomponents/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="forevercoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ForeverCoder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/10/Dagger2（三）Subcomponents/" itemprop="url">Dagger2（三）Subcomponents</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-10T15:41:32+08:00">
+                2019-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dagger2/" itemprop="url" rel="index">
+                    <span itemprop="name">Dagger2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/10/Dagger2（三）Subcomponents/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/10/Dagger2（三）Subcomponents/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/10/Dagger2（三）Subcomponents/" class="leancloud_visitors" data-flag-title="Dagger2（三）Subcomponents">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Component之间除了dependencies依赖关系外，还可以有继承关系。</p>
+<ul>
+<li>依赖关系 <blockquote>
+<p>一个 Component 依赖其他 Compoent 公开的依赖实例，用 Component 中的dependencies声明</p>
+</blockquote>
+</li>
+<li>继承关系 <blockquote>
+<p>一个 Component 继承（也可以叫扩展）某 Component 提供更多的依赖，SubComponent 就是继承关系的体现。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="依赖关系-dependencies"><a href="#依赖关系-dependencies" class="headerlink" title="依赖关系 dependencies"></a>依赖关系 dependencies</h4><p>MainComponent依赖AppComponent。</p>
+<ul>
+<li>MainComponent要使用AppComponent的PrintService，MainComponent必须显示提供方法将其暴露出来。</li>
+<li>MainComponent和AppComponent的Scope不能相同，因为他们的生命周期不同。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@Singleton</div><div class="line">@Component(modules = &#123;AppModule.class,</div><div class="line">        PrinterModule.class&#125;)</div><div class="line">public interface AppComponent &#123;</div><div class="line"></div><div class="line">    void inject(App app);</div><div class="line"></div><div class="line">    PrintService printService();</div><div class="line"></div><div class="line">&#125;</div><div class="line">//使用dependencies</div><div class="line">@ActivityScope</div><div class="line">@Component(dependencies = AppComponent.class)</div><div class="line">public interface MainComponent &#123;</div><div class="line">    void inject(MainActivity activity);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="继承关系-Subcomponents"><a href="#继承关系-Subcomponents" class="headerlink" title="继承关系 Subcomponents"></a>继承关系 Subcomponents</h4><h5 id="声明subcomponent"><a href="#声明subcomponent" class="headerlink" title="声明subcomponent"></a>声明subcomponent</h5><ul>
+<li>和Component类似，必须是abstract class 或者interface.使用@Subcomponent标注。</li>
+<li>Subcomponent和parent component的Scope不能相同，所有用自定义Scope @ActivityScope</li>
+<li>SubComponent 必须显式地声明 Subcomponent.Builder，parent Component 需要用 Builder 来创建 SubComponent</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">@ActivityScope</div><div class="line">@Subcomponent</div><div class="line">public interface SubMainComponent &#123;</div><div class="line"></div><div class="line">    @Subcomponent.Builder</div><div class="line">    interface Builder &#123;</div><div class="line"></div><div class="line">        SubMainComponent build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void inject(MainActivity mainActivity);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">@Singleton</div><div class="line">@Component(modules = &#123;AppModule.class, PrinterModule.class&#125;)</div><div class="line">public interface AppComponent &#123;</div><div class="line"></div><div class="line">    void inject(App app);// 继承关系中不用显式地提供暴露依赖实例的接口</div><div class="line"></div><div class="line">    SubMainComponent.Builder mainBuilder(); // 用来创建 Subcomponent</div><div class="line"></div><div class="line">    SubSecondComponent.Builder secondBuilder();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>SubComponent 编译时不会生成 DaggerXXComponent，需要通过 parent Component 的获取 SubComponent.Builder 方法获取 SubComponent 实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">MainActivity中注入依赖:</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">    super.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line">    App.component().mainBuilder()</div><div class="line">            .build()</div><div class="line">            .inject(this);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Dagger生成的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">public final class DaggerAppComponent implements AppComponent &#123;</div><div class="line">  //....</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public SubMainComponent.Builder mainBuilder() &#123;</div><div class="line">    return new SubMainComponentBuilder();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public SubSecondComponent.Builder secondBuilder() &#123;</div><div class="line">    return new SubSecondComponentBuilder();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private final class SubMainComponentBuilder implements SubMainComponent.Builder &#123;</div><div class="line">    @Override</div><div class="line">    public SubMainComponent build() &#123;</div><div class="line">      return new SubMainComponentImpl(this);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private final class SubMainComponentImpl implements SubMainComponent &#123;</div><div class="line">    private SubMainComponentImpl(SubMainComponentBuilder builder) &#123;&#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void inject(MainActivity mainActivity) &#123;</div><div class="line">      injectMainActivity(mainActivity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private MainActivity injectMainActivity(MainActivity instance) &#123;</div><div class="line">      MainActivity_MembersInjector.injectPrintService(</div><div class="line">          instance, DaggerAppComponent.this.printServiceProvider.get());</div><div class="line">      return instance;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private final class SubSecondComponentBuilder implements SubSecondComponent.Builder &#123;</div><div class="line">    @Override</div><div class="line">    public SubSecondComponent build() &#123;</div><div class="line">      return new SubSecondComponentImpl(this);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private final class SubSecondComponentImpl implements SubSecondComponent &#123;</div><div class="line">    private SubSecondComponentImpl(SubSecondComponentBuilder builder) &#123;&#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void inject(SecondActivity secondActivity) &#123;</div><div class="line">      injectSecondActivity(secondActivity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private SecondActivity injectSecondActivity(SecondActivity instance) &#123;</div><div class="line">      SecondActivity_MembersInjector.injectPrintService(</div><div class="line">          instance, DaggerAppComponent.this.printServiceProvider.get());</div><div class="line">      return instance;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>从代码中可以看出，SubMainComponentImpl中直接使用了DaggerAppComponent.this.printServiceProvider.get()，也就是说Subcomponent中可以使用ParentComponent提供 的依赖</p>
+<h5 id="依赖关系-vs-继承关系"><a href="#依赖关系-vs-继承关系" class="headerlink" title="依赖关系 vs 继承关系"></a>依赖关系 vs 继承关系</h5><p>相同点：</p>
+<ul>
+<li><p>两者都能复用其他 Component 的依赖</p>
+</li>
+<li><p>有依赖关系和继承关系的 Component 不能有相同的 Scope</p>
+</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li><p>依赖关系中被依赖的 Component 必须显式地提供公开依赖实例的接口，而 SubComponent 默认继承 parent Component 的依赖。</p>
+</li>
+<li><p>依赖关系会生成两个独立的 DaggerXXComponent 类，而 SubComponent 不会生成 独立的 DaggerXXComponent 类。</p>
+</li>
+</ul>
+<h4 id="Repeated-modules"><a href="#Repeated-modules" class="headerlink" title="Repeated modules"></a>Repeated modules</h4><p>当相同的 Module 注入到 parent Component 和它的 SubComponent 中时，则每个 Component 都将自动使用这个 Module 的同一实例。也就是如果在 SubComponent.Builder 中调用相同的 Module 或者在返回 SubComponent 的抽象工厂方法中以重复 Module 作为参数时，会出现错误。（前者在编译时不能检测出，是运行时错误）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">@Component(modules = &#123;RepeatedModule.class, ...&#125;)</div><div class="line">interface ComponentOne &#123;</div><div class="line">  ComponentTwo componentTwo(RepeatedModule repeatedModule); // COMPILE ERROR!</div><div class="line">  ComponentThree.Builder componentThreeBuilder();</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Subcomponent(modules = &#123;RepeatedModule.class, ...&#125;)</div><div class="line">interface ComponentTwo &#123; ... &#125;</div><div class="line"></div><div class="line">@Subcomponent(modules = &#123;RepeatedModule.class, ...&#125;)</div><div class="line">interface ComponentThree &#123;</div><div class="line">  @Subcomponent.Builder</div><div class="line">  interface Builder &#123;</div><div class="line">    Builder repeatedModule(RepeatedModule repeatedModule);</div><div class="line">    ComponentThree build();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">DaggerComponentOne.create().componentThreeBuilder()</div><div class="line">    .repeatedModule(new RepeatedModule()) // UnsupportedOperationException!</div><div class="line">    .build();</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/zhy060307/dagger2" target="_blank" rel="external">Demo Github地址</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2019/02/10/Dagger2（二）-Lazy、Qualifier、Scope等/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2036,176 +2242,6 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2017/02/27/Dagger2-入门/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="forevercoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ForeverCoder's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/27/Dagger2-入门/" itemprop="url">Dagger2 初体验</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-27T17:36:58+08:00">
-                2017-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Dagger/" itemprop="url" rel="index">
-                    <span itemprop="name">Dagger</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/27/Dagger2-入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/27/Dagger2-入门/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/02/27/Dagger2-入门/" class="leancloud_visitors" data-flag-title="Dagger2 初体验">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是Dagger2"><a href="#什么是Dagger2" class="headerlink" title="什么是Dagger2"></a>什么是Dagger2</h2><p>  A fast dependency injector for Android and Java.<br><br>  Dagger2起源于Dagger，是一款基于Java注解来实现的完全在编译阶段完成依赖注入的开源库，主要用于模块间解耦、提高代码的健壮性和可维护性。Dagger2在编译阶段通过apt利用Java注解自动生成Java代码，然后结合手写的代码来自动帮我们完成依赖注入的工作。</p>
-<h2 id="初步体验"><a href="#初步体验" class="headerlink" title="初步体验"></a>初步体验</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><p>  在app module的build.gradle中增加如下依赖</p>
-<pre><code>dependencies {
-        ......
-
-        compile &apos;com.google.dagger:dagger:2.x&apos;
-        annotationProcessor &apos;com.google.dagger:dagger-compiler:2.x&apos;
-</code></pre><p>   }</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2256,7 +2292,7 @@ MariaDB [test_db]&gt; select * from tcount_tbl;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
