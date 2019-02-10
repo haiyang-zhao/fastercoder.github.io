@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="SOLID Single responsibility   单一职责 a class should have only a single responsibility   Open/closed  开闭原则 software entities (classes, modules, functions, etc.) should be open for extension, but closed f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Guice">
+<meta property="og:url" content="http://forevercoder.com/2019/02/10/Guice/index.html">
+<meta property="og:site_name" content="ForeverCoder&#39;s Blog">
+<meta property="og:description" content="SOLID Single responsibility   单一职责 a class should have only a single responsibility   Open/closed  开闭原则 software entities (classes, modules, functions, etc.) should be open for extension, but closed f">
+<meta property="og:updated_time" content="2019-02-10T07:35:39.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Guice">
+<meta name="twitter:description" content="SOLID Single responsibility   单一职责 a class should have only a single responsibility   Open/closed  开闭原则 software entities (classes, modules, functions, etc.) should be open for extension, but closed f">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://forevercoder.com/2019/02/10/Guice/"/>
+
+
+
+
+
+  <title>Guice | ForeverCoder's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?266ec7caa9a4380a1168e6984e3d97a8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ForeverCoder's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2019/02/10/Guice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="forevercoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ForeverCoder's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Guice</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-10T15:34:45+08:00">
+                2019-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/10/Guice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/10/Guice/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/10/Guice/" class="leancloud_visitors" data-flag-title="Guice">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="SOLID"><a href="#SOLID" class="headerlink" title="SOLID"></a>SOLID</h3><ul>
+<li>Single responsibility   单一职责<blockquote>
+<p>a class should have only a single responsibility</p>
+</blockquote>
+</li>
+<li>Open/closed  开闭原则<blockquote>
+<p>software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification</p>
+</blockquote>
+</li>
+<li>Liskov substitution  里氏替换原则<blockquote>
+<p>objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.</p>
+</blockquote>
+</li>
+<li>Interface segregation  接口隔离<blockquote>
+<p>many client-specific interfaces are better than one general-purpose interface.</p>
+</blockquote>
+</li>
+<li>Dependency inversion   依赖倒置<blockquote>
+<p>one should depend upon abstractions, [not] concretions.</p>
+<h3 id="依赖倒置-Dependency-inversion-principle"><a href="#依赖倒置-Dependency-inversion-principle" class="headerlink" title="依赖倒置 (Dependency inversion principle)"></a>依赖倒置 (Dependency inversion principle)</h3></blockquote>
+</li>
+<li>High-level modules should not depend on low-level modules. Both should depend on abstractions.</li>
+<li>Abstractions should not depend on details.Details should depend on abstractions.</li>
+</ul>
+<h3 id="依赖注入-DI-dependency-injection"><a href="#依赖注入-DI-dependency-injection" class="headerlink" title="依赖注入   DI (dependency injection)"></a>依赖注入   DI (dependency injection)</h3><blockquote>
+<p>Dependency injection is one form of the broader technique of inversion of control（IoC）.</p>
+</blockquote>
+<ul>
+<li>Reduced Dependencies</li>
+<li>More Reusable Code</li>
+<li>More Testable Code</li>
+<li>More Readable Code</li>
+</ul>
+<h3 id="JSR330"><a href="#JSR330" class="headerlink" title="JSR330"></a><a href="https://jcp.org/en/jsr/detail?id=330" target="_blank" rel="external">JSR330</a></h3><p>JSR330在javax.inject中规定了依赖注入的标准注解(Annotations)。包括：</p>
+<ul>
+<li>@Inject : 标记为“可注入”。可用于构造器(constructors), 方法(methods)或字段(fields)</li>
+<li>@Qualifier : 限定器</li>
+<li>@Scope : 标记作用域</li>
+<li>@Named : 基于 String 的限定器</li>
+<li>@Singleton : 标记为单例</li>
+</ul>
+<h3 id="Guice"><a href="#Guice" class="headerlink" title="Guice"></a>Guice</h3><blockquote>
+<p>Guice (pronounced ‘juice’) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google.</p>
+</blockquote>
+<h4 id="Bindings"><a href="#Bindings" class="headerlink" title="Bindings"></a>Bindings</h4><ul>
+<li><p>Linked Binding</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">    bind(Printer.class).to(PdfPrinter.class);</div><div class="line">    bind(PdfPrinter.class).to(ColorPdfPrinter.class);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>BindingAnnotations</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@BindingAnnotation</span></div><div class="line"><span class="meta">@Target</span>(&#123;FIELD, PARAMETER, METHOD&#125;)</div><div class="line"><span class="meta">@Retention</span>(RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Alipay &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bind(Pay.class)</div><div class="line">.annotatedWith(Alipay.class)</div><div class="line">.to(AlipayImpl.class);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Inject</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">BillService</span><span class="params">(@Alipay Pay pay)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.pay = pay;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>Named</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">bind(Pay.class)</div><div class="line">.annotatedWith(Names.named(<span class="string">"wechat"</span>))</div><div class="line">.to(WechatPayImpl.class);</div><div class="line"></div><div class="line"><span class="meta">@Inject</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPay</span><span class="params">(@Named(<span class="string">"wechat"</span>)</span> Pay pay) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.pay = pay;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Constant Bindings</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line"><span class="meta">@Inject</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectDatabase</span><span class="params">(@Named(<span class="string">"JBDC"</span>)</span> String dbUrl) </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">bind(String.class).annotatedWith(Names.named(<span class="string">"JBDC"</span>)).toInstance(<span class="string">"jdbc:mysql://localhost:5326/emp"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>ProvidesMethods</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckVersionModule</span> <span class="keyword">extends</span> <span class="title">AbstractModule</span> </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">            bind(String.class)</div><div class="line">                    .annotatedWith(Names.named(<span class="string">"update url"</span>))</div><div class="line">                    .toInstance(<span class="string">"http://console.qa.roomis.com.cn/api/client-apps/latest"</span>);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Provides</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Request <span class="title">buildRequest</span><span class="params">(@Named(<span class="string">"update url"</span>)</span> String url) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Request.Builder()</div><div class="line">                    .url(url)</div><div class="line">                    .addHeader(<span class="string">"X-Consumer-Custom-ID"</span>, <span class="string">"roomis-k12-own"</span>)</div><div class="line">                    .addHeader(<span class="string">"deviceSn"</span>, <span class="string">"000ffd4a014f"</span>)</div><div class="line">                    .addHeader(<span class="string">"apikey"</span>, <span class="string">"0001e01807cd4a9ebab4bbb5576f1815"</span>)</div><div class="line">                    .build();</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Provides</span></div><div class="line">        <span class="function"><span class="keyword">public</span> OkHttpClient <span class="title">provideClient</span><span class="params">()</span> </span>&#123;</div><div class="line">            OkHttpClient.Builder builder = <span class="keyword">new</span> OkHttpClient.Builder();</div><div class="line">            builder.connectTimeout(<span class="number">60</span>, TimeUnit.SECONDS)</div><div class="line">                    .readTimeout(<span class="number">30</span>, TimeUnit.SECONDS)</div><div class="line">                    .writeTimeout(<span class="number">30</span>, TimeUnit.SECONDS);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> builder.build();</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>ProviderBindings</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrinterModule</span> <span class="keyword">extends</span> <span class="title">AbstractModule</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">        bind(Printer.class)</div><div class="line">                .toProvider(PrinterProvider.class);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrinterProvider</span> <span class="keyword">implements</span> <span class="title">Provider</span>&lt;<span class="title">Printer</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Printer <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PdfPrinter();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Constructor Bindings</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">_06_ConstructorBindings</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Injector injector = Guice.createInjector(<span class="keyword">new</span> TextEditorModule());</div><div class="line">        TextEditor editor = injector.getInstance(TextEditor.class);</div><div class="line">        editor.makeSpellCheck();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextEditor</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> SpellChecker spellChecker;</div><div class="line"></div><div class="line">    <span class="meta">@Inject</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TextEditor</span><span class="params">(SpellChecker spellChecker)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.spellChecker = spellChecker;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeSpellCheck</span><span class="params">()</span> </span>&#123;</div><div class="line">        spellChecker.checkSpelling();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Binding Module</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextEditorModule</span> <span class="keyword">extends</span> <span class="title">AbstractModule</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            bind(SpellChecker.class)</div><div class="line">                    .toConstructor(SpellCheckerImpl.class.getConstructor(String.class));</div><div class="line">        &#125; <span class="keyword">catch</span> (NoSuchMethodException | SecurityException e) &#123;</div><div class="line">            System.out.println(<span class="string">"Required constructor missing"</span>);</div><div class="line">        &#125;</div><div class="line">        bind(String.class)</div><div class="line">                .annotatedWith(Names.named(<span class="string">"JDBC"</span>))</div><div class="line">                .toInstance(<span class="string">"jdbc:mysql://localhost:5326/emp"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//spell checker interface</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">SpellChecker</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checkSpelling</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//spell checker implementation</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpellCheckerImpl</span> <span class="keyword">implements</span> <span class="title">SpellChecker</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String dbUrl;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SpellCheckerImpl</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SpellCheckerImpl</span><span class="params">(@Named(<span class="string">"JDBC"</span>)</span> String dbUrl) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.dbUrl = dbUrl;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkSpelling</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Start checkSpelling."</span>);</div><div class="line">        System.out.println(dbUrl);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Scopes"><a href="#Scopes" class="headerlink" title="Scopes"></a>Scopes</h4><p>默认创建新实例</p>
+<ul>
+<li>@Singleton<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Singleton</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintService</span> </span>&#123;</div><div class="line"><span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Singleton</span></div><div class="line"><span class="meta">@Provides</span></div><div class="line"><span class="function"><span class="keyword">public</span> OkHttpClient <span class="title">provideClient</span><span class="params">()</span> </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bind(Printer.class).to(PdfPrinter.class).in(Singleton.class);</div></pre></td></tr></table></figure></p>
+<p>Eager Singletons<br>立即加载<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bind(TransactionLog.class).to(InMemoryTransactionLog.class).asEagerSingleton();</div></pre></td></tr></table></figure></p>
+<ul>
+<li>@SessionScoped</li>
+<li>@RequestScoped</li>
+</ul>
+<h4 id="Injections"><a href="#Injections" class="headerlink" title="Injections"></a>Injections</h4><ul>
+<li>Constructor Injection</li>
+<li>Method Injection</li>
+<li>Field Injection<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Singleton</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintService</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Printer printer;</div><div class="line"></div><div class="line">    <span class="meta">@Inject</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PrintService</span><span class="params">(Printer printer)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.printer = printer;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//    @Inject</span></div><div class="line"><span class="comment">//    private Printer printer;</span></div><div class="line"></div><div class="line"><span class="comment">//    private Printer printer;</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//    @Inject</span></div><div class="line"><span class="comment">//    public void setPrinter(Printer printer) &#123;</span></div><div class="line"><span class="comment">//        this.printer = printer;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWork</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.printer.print();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="Dagger2"><a href="#Dagger2" class="headerlink" title="Dagger2"></a>Dagger2</h2><blockquote>
+<p>Dagger is a fully static, compile-time dependency injection framework for both Java and Android. It is an adaptation of an earlier version created by Square and now maintained by Google.</p>
+</blockquote>
+<p>why reinvent the wheel? </p>
+<blockquote>
+<p>Dagger 2 is the first to implement the full stack with generated code. </p>
+</blockquote>
+<h4 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h4><p>build.gradle</p>
+<pre><code> implementation &apos;com.google.dagger:dagger:2.20&apos;
+annotationProcessor &apos;com.google.dagger:dagger-compiler:2.20&apos;
+</code></pre><p>#### </p>
+<ul>
+<li>Inject</li>
+<li>Module</li>
+<li>Provides</li>
+<li>Component</li>
+<li>Scope</li>
+<li>Qualifier</li>
+</ul>
+<p>#<br><a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="external">https://en.wikipedia.org/wiki/SOLID</a> <br><br><a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank" rel="external">https://en.wikipedia.org/wiki/Dependency_inversion_principle</a> <br><br><a href="https://blog.csdn.net/briblue/article/details/75093382" target="_blank" rel="external">https://blog.csdn.net/briblue/article/details/75093382</a> <br><br><a href="http://tutorials.jenkov.com/dependency-injection/dependency-injection-benefits.html" target="_blank" rel="external">http://tutorials.jenkov.com/dependency-injection/dependency-injection-benefits.html</a> <br><br><a href="https://blog.csdn.net/xtayfjpk/article/details/40657781" target="_blank" rel="external">https://blog.csdn.net/xtayfjpk/article/details/40657781</a></p>
+<p><a href="https://google.github.io/dagger/" target="_blank" rel="external">https://google.github.io/dagger/</a> <br><br><a href="https://blog.csdn.net/qq_17766199/article/details/73030696" target="_blank" rel="external">https://blog.csdn.net/qq_17766199/article/details/73030696</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/10/ADB（Android-Debug-Bridge/" rel="next" title="ADB（Android Debug Bridge)">
+                <i class="fa fa-chevron-left"></i> ADB（Android Debug Bridge)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/10/Dagger2（一）Dagger2的基本使用和原理/" rel="prev" title="Dagger2（一）Dagger2的基本使用和原理">
+                Dagger2（一）Dagger2的基本使用和原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/02/10/Guice/"
+           data-title="Guice" data-url="http://forevercoder.com/2019/02/10/Guice/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">forevercoder</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SOLID"><span class="nav-number">1.</span> <span class="nav-text">SOLID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖倒置-Dependency-inversion-principle"><span class="nav-number">2.</span> <span class="nav-text">依赖倒置 (Dependency inversion principle)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖注入-DI-dependency-injection"><span class="nav-number">3.</span> <span class="nav-text">依赖注入   DI (dependency injection)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSR330"><span class="nav-number">4.</span> <span class="nav-text">JSR330</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guice"><span class="nav-number">5.</span> <span class="nav-text">Guice</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bindings"><span class="nav-number">5.1.</span> <span class="nav-text">Bindings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scopes"><span class="nav-number">5.2.</span> <span class="nav-text">Scopes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Injections"><span class="nav-number">5.3.</span> <span class="nav-text">Injections</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dagger2"><span class="nav-number"></span> <span class="nav-text">Dagger2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Start"><span class="nav-number">0.1.</span> <span class="nav-text">Start</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">forevercoder</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"forevercoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("KGYQnDk6wbtrM9X6rzcSS7Ue-gzGzoHsz", "gTAJRCQN6N5oYGyBDDL301fK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
