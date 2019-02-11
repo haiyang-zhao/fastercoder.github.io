@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="android," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -79,25 +79,17 @@
 
 
 
-<meta name="description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。 二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域  运行时如下图：单击按钮会执行相应的方法，并弹当前">
-<meta name="keywords" content="android">
+<meta name="description" content="切换终端control + alt + F1/F2/F3...  查看当前终端设备 : tty 查看当前终端登录的用户:whoami/who am i 查看所有登录的用户    :who 查看运行模式:runlevel 切换图像/终端: init 3/5 //3:终端，5：图像界面   命令提示符 命令提示符：prompt [root@localhost ~]# #:管理员  $ 普通用户  显示">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解 scrollTo()、scrollBy()、getScrollX()">
-<meta property="og:url" content="http://forevercoder.com/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/index.html">
+<meta property="og:title" content="Linux基本命令_1">
+<meta property="og:url" content="http://forevercoder.com/2019/02/11/Linux基本命令-1/index.html">
 <meta property="og:site_name" content="ForeverCoder&#39;s Blog">
-<meta property="og:description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。 二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域  运行时如下图：单击按钮会执行相应的方法，并弹当前">
-<meta property="og:image" content="http://img.blog.csdn.net/20150414083752720">
-<meta property="og:image" content="http://img.blog.csdn.net/20150414084317419">
-<meta property="og:image" content="http://img.blog.csdn.net/20150414091643430">
-<meta property="og:image" content="http://img.blog.csdn.net/20150414091815236">
-<meta property="og:image" content="http://img.blog.csdn.net/20150414094119017">
-<meta property="og:image" content="http://img.blog.csdn.net/20150414093915469">
-<meta property="og:image" content="http://img.blog.csdn.net/20150414095633182">
-<meta property="og:updated_time" content="2015-12-24T01:54:38.000Z">
+<meta property="og:description" content="切换终端control + alt + F1/F2/F3...  查看当前终端设备 : tty 查看当前终端登录的用户:whoami/who am i 查看所有登录的用户    :who 查看运行模式:runlevel 切换图像/终端: init 3/5 //3:终端，5：图像界面   命令提示符 命令提示符：prompt [root@localhost ~]# #:管理员  $ 普通用户  显示">
+<meta property="og:updated_time" content="2019-02-11T08:06:54.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解 scrollTo()、scrollBy()、getScrollX()">
-<meta name="twitter:description" content="一、废话先说   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。 二、测试界面 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域  运行时如下图：单击按钮会执行相应的方法，并弹当前">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20150414083752720">
+<meta name="twitter:title" content="Linux基本命令_1">
+<meta name="twitter:description" content="切换终端control + alt + F1/F2/F3...  查看当前终端设备 : tty 查看当前终端登录的用户:whoami/who am i 查看所有登录的用户    :who 查看运行模式:runlevel 切换图像/终端: init 3/5 //3:终端，5：图像界面   命令提示符 命令提示符：prompt [root@localhost ~]# #:管理员  $ 普通用户  显示">
 
 
 
@@ -127,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://forevercoder.com/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/"/>
+  <link rel="canonical" href="http://forevercoder.com/2019/02/11/Linux基本命令-1/"/>
 
 
 
 
 
-  <title>深入理解 scrollTo()、scrollBy()、getScrollX() | ForeverCoder's Blog</title>
+  <title>Linux基本命令_1 | ForeverCoder's Blog</title>
   
 
 
@@ -280,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/">
+    <link itemprop="mainEntityOfPage" href="http://forevercoder.com/2019/02/11/Linux基本命令-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="forevercoder">
@@ -297,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深入理解 scrollTo()、scrollBy()、getScrollX()</h1>
+          <h1 class="post-title" itemprop="name headline">Linux基本命令_1</h1>
         
 
         <div class="post-meta">
@@ -309,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-24T09:35:59+08:00">
-                2015-12-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-11T16:05:45+08:00">
+                2019-02-11
               </time>
             
 
@@ -332,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android开发/" itemprop="url" rel="index">
-                    <span itemprop="name">Android开发</span>
+                  <a href="/categories/Linux基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux基础</span>
                   </a>
                 </span>
 
@@ -350,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/" itemprop="commentCount"></span>
+                <a href="/2019/02/11/Linux基本命令-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/11/Linux基本命令-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -359,7 +351,7 @@
 
           
           
-             <span id="/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/" class="leancloud_visitors" data-flag-title="深入理解 scrollTo()、scrollBy()、getScrollX()">
+             <span id="/2019/02/11/Linux基本命令-1/" class="leancloud_visitors" data-flag-title="Linux基本命令_1">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -390,29 +382,118 @@
       
 
       
-        <h2 id="一、废话先说"><a href="#一、废话先说" class="headerlink" title="一、废话先说"></a>一、废话先说</h2><p>   我们在开发Android自定义控件时，尤其是做一些滑动效果时，往往会使用 scrollTo()、scrollBy()、getScrollX() 这几个方法。对初学者来说不太好理解这几个方法，这篇博文就来彻底弄清这几个API的用法。</p>
-<h2 id="二、测试界面"><a href="#二、测试界面" class="headerlink" title="二、测试界面"></a>二、测试界面</h2><p> 我们测试的界面中有三个Linearlayout如下图：黄色框所在的区域为屏幕显示区域</p>
-<p><img src="http://img.blog.csdn.net/20150414083752720" alt=""></p>
-<p>运行时如下图：<br><img src="http://img.blog.csdn.net/20150414084317419" alt="这里写图片描述"><br>单击按钮会执行相应的方法，并弹当前getScrollX()、getScrollY()的值 </p>
-<a id="more"></a>
-<h2 id="三、详细讲解"><a href="#三、详细讲解" class="headerlink" title="三、详细讲解"></a>三、详细讲解</h2><h3 id="1、scrollTo"><a href="#1、scrollTo" class="headerlink" title="1、scrollTo()"></a>1、scrollTo()</h3><p>   View中的源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Set the scrolled position of your view. This will cause a call to</div><div class="line"> * &#123;<span class="doctag">@link</span> #onScrollChanged(int, int, int, int)&#125; and the view will be</div><div class="line"> * invalidated.</div><div class="line"> * <span class="doctag">@param</span> x the x position to scroll to</div><div class="line"> * <span class="doctag">@param</span> y the y position to scroll to</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scrollTo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mScrollX != x || mScrollY != y) &#123;</div><div class="line">        <span class="keyword">int</span> oldX = mScrollX;</div><div class="line">        <span class="keyword">int</span> oldY = mScrollY;</div><div class="line">        mScrollX = x;</div><div class="line">        mScrollY = y;</div><div class="line">        invalidateParentCaches();</div><div class="line">        onScrollChanged(mScrollX, mScrollY, oldX, oldY);</div><div class="line">        <span class="keyword">if</span> (!awakenScrollBars()) &#123;</div><div class="line">            postInvalidateOnAnimation();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>scrollTo用来设置你的View要滚动的坐标 </li>
-<li>mScrollX、mScrollY 表示当前View在水平和垂直方向上分别滑动了多少</li>
-<li>scrollTo执行后会调用onScrollChanged()方法</li>
+        <h3 id="切换终端"><a href="#切换终端" class="headerlink" title="切换终端"></a>切换终端</h3><pre><code>control + alt + F1/F2/F3...
+</code></pre><ul>
+<li>查看当前终端设备 : tty</li>
+<li>查看当前终端登录的用户:whoami/who am i</li>
+<li>查看所有登录的用户    :who</li>
+<li>查看运行模式:runlevel</li>
+<li>切换图像/终端: init 3/5 <pre><code>//3:终端，5：图像界面
+</code></pre></li>
 </ul>
-<p>我们执行  <strong>scrollTo(100,100)</strong> 过程如下：<br><img src="http://img.blog.csdn.net/20150414091643430" alt="这里写图片描述"><br>执行结果如下：<strong>我们的屏幕向左上方滑动了</strong><br><img src="http://img.blog.csdn.net/20150414091815236" alt="这里写图片描述"></p>
-<p>再执行  <strong>scrollTo(-100,-100)</strong> 过程如下：<br><img src="http://img.blog.csdn.net/20150414094119017" alt="这里写图片描述"><br>执行结果如下：<strong>我们的屏幕向右下方滑动了</strong><br><img src="http://img.blog.csdn.net/20150414093915469" alt="这里写图片描述"></p>
-<p>是不是很好理解呢，总结下：</p>
-<ul>
-<li><strong>x&gt;0表示视图(View或ViewGroup)的内容从右向左滑动;反之，从左向右滑动</strong></li>
-<li><strong>y&gt;0表示视图(View或ViewGroup)的内容从下向上滑动;反之，从上向下滑动</strong></li>
+<h3 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h3><ul>
+<li><p>命令提示符：prompt</p>
+<pre><code>[root@localhost ~]#
+#:管理员  $ 普通用户
+</code></pre></li>
+<li>显示提示符格式：#echo $PS1</li>
+<li><p>修改提示符格式</p>
+<pre><code>PS1 = &quot;\[\e[1;5;41;33m\][\u@\h \w]\\$\[\e[0m\]&quot;
+</code></pre></li>
 </ul>
-<h3 id="2、scrollBy"><a href="#2、scrollBy" class="headerlink" title="2、scrollBy()"></a>2、scrollBy()</h3><p> View中的源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Move the scrolled position of your view. This will cause a call to</div><div class="line"> * &#123;<span class="doctag">@link</span> #onScrollChanged(int, int, int, int)&#125; and the view will be</div><div class="line"> * invalidated.</div><div class="line"> * <span class="doctag">@param</span> x the amount of pixels to scroll by horizontally</div><div class="line"> * <span class="doctag">@param</span> y the amount of pixels to scroll by vertically</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scrollBy</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    scrollTo(mScrollX + x, mScrollY + y);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>只是简单调用了 srcollTo(),在原有 mScrollX 、mScrollY 的基础上增量滚动 x、y</p>
-<p>我们从刚才scrollTo(-100,-100)基础上scrollBy(50,50)，那么就相当于 scrollTo(50,50),很简单吧。<br><img src="http://img.blog.csdn.net/20150414095633182" alt="这里写图片描述"></p>
-<h3 id="3、getScrollX-；-getScrollY"><a href="#3、getScrollX-；-getScrollY" class="headerlink" title="3、getScrollX()； getScrollY()"></a>3、getScrollX()； getScrollY()</h3><p> View中的源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * Return the scrolled left position of this view. This is the left edge of</div><div class="line">     * the displayed part of your view. You do not need to draw any pixels</div><div class="line">     * farther left, since those are outside of the frame of your view on</div><div class="line">     * screen.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The left edge of the displayed part of your view, in pixels.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getScrollX</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mScrollX;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Return the scrolled top position of this view. This is the top edge of</div><div class="line">     * the displayed part of your view. You do not need to draw any pixels above</div><div class="line">     * it, since those are outside of the frame of your view on screen.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The top edge of the displayed part of your view, in pixels.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getScrollY</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mScrollY;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>getScrollX()、getScrollY()返回的就是scrollTo(),scrollBy()中的不断变化的偏移量，我的前面的 Toast也<br>能体现出来。</p>
+<pre><code>\e : \033           \u 当前用户
+\h 主机名简称       \H 主机名
+\w 当前工作目录     \W 当前工作目录基名
+\t 24小时时间格式   \T 12小时时间格式
+\! 命令历史数       \# 开机后命令历史数
+</code></pre><ul>
+<li>登录提示文件：/etc/motd</li>
+</ul>
+<h3 id="使用shell-linux命令解释器"><a href="#使用shell-linux命令解释器" class="headerlink" title="使用shell (linux命令解释器)"></a>使用shell (linux命令解释器)</h3><ul>
+<li><p>查看正在使用的shell  </p>
+<p>  echo $SHELL </p>
+</li>
+<li><p>查看系统支持的shell类型</p>
+<p>  cat /etc/shells </p>
+</li>
+<li><p>切换shell</p>
+<p> /bin/bash   </p>
+</li>
+<li><p>iterm2 切换shell</p>
+<p>  chsh -s /bin/zsh</p>
+</li>
+</ul>
+<p>&lt;–more–&gt;</p>
+<h3 id="硬件信息"><a href="#硬件信息" class="headerlink" title="硬件信息"></a>硬件信息</h3><ul>
+<li>内核版本: uname -r</li>
+<li>磁盘容量信息:lsblk</li>
+<li>内存使用信息: free -m/g</li>
+<li>cpu使用率:top</li>
+</ul>
+<h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><p>在shell中可执行的命令有两类</p>
+<ul>
+<li><p>内部命令：shell自带的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">help  内部命令列表</div><div class="line">enable [cmd] 启动内部命令</div><div class="line">enable -n [cmd] 禁止内部命令</div><div class="line">enable -n 查看所有禁止的内部命令</div></pre></td></tr></table></figure>
+</li>
+<li><p>外部命令: 系统路径$PATH下对应的可执行文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查看路径: which -a |--ship-alias; whereis</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用type 区分内外部命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# type pwd</div><div class="line">pwd is a shell builtin</div><div class="line">[root@localhost ~]# type free</div><div class="line">free is /usr/bin/free</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Hash缓存表"><a href="#Hash缓存表" class="headerlink" title="Hash缓存表"></a>Hash缓存表</h3><blockquote>
+<p>系统初始hash表为空，执行外部命令时，先从PATH路径<br>寻找，然后将该条命令的路径加到hash表中，下次执行时直接从hash表中查找。</p>
+</blockquote>
+<p>hash常见用法</p>
+<ul>
+<li><p>hash 显示hash缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# hash</div><div class="line">hits    command</div><div class="line">   1    /usr/bin/whereis</div><div class="line">   4    /usr/bin/ls</div></pre></td></tr></table></figure>
+</li>
+<li><p>hash -l 显示hash缓存，可作为输入使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# hash -l</div><div class="line">builtin hash -p /usr/bin/whereis whereis</div><div class="line">builtin hash -p /usr/bin/ls ls</div><div class="line">builtin hash -p /usr/bin/free free</div></pre></td></tr></table></figure>
+</li>
+<li><p>hash -p path name 将命令全路径path起别名为name</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# hash -p /usr/bin/free f</div><div class="line">[root@localhost ~]# f</div><div class="line">              total        used        free      shared  buff/cache   available</div><div class="line">Mem:         995896      144196      681788        7824      169912      671712</div><div class="line">Swap:       2097148           0     2097148</div></pre></td></tr></table></figure>
+</li>
+<li><p>hash -t name 打印缓存中name的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# hash -t f</div><div class="line">/usr/bin/free</div></pre></td></tr></table></figure>
+</li>
+<li><p>hash -d name 清除name缓存</p>
+</li>
+<li>hash -r  清除缓存</li>
+</ul>
+<h3 id="命令别名"><a href="#命令别名" class="headerlink" title="命令别名"></a>命令别名</h3><ul>
+<li><p>alias 显示当前shell进程所有可用的命令别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[root@localhost network-scripts]# alias</div><div class="line">alias cdnet=&apos;cd /etc/sysconfig/network-scripts/&apos;</div><div class="line">alias cp=&apos;cp -i&apos;</div><div class="line">alias egrep=&apos;egrep --color=auto&apos;</div><div class="line">alias fgrep=&apos;fgrep --color=auto&apos;</div><div class="line">alias grep=&apos;grep --color=auto&apos;</div><div class="line">alias l.=&apos;ls -d .* --color=auto&apos;</div><div class="line">alias ll=&apos;ls -l --color=auto&apos;</div><div class="line">alias ls=&apos;ls --color=auto&apos;</div><div class="line">alias mv=&apos;mv -i&apos;</div><div class="line">alias rm=&apos;rm -i&apos;</div><div class="line">alias which=&apos;alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>alias cdnet=’cd /etc/sysconfig/network-scripts/‘ 起别名</p>
+</li>
+<li><p>要想永久有效，要定义在配置文件中</p>
+<ul>
+<li>仅对当前用户: ~/.bashrc</li>
+<li>对所有用户有效:/etc/bashrc</li>
+</ul>
+</li>
+<li>bash进程重新读取配置文件：<br>source .bashrc 或者 . .bashrc</li>
+<li>撤销别名 unalias ,-a 取消所有别名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost /]# unalias cdnet</div><div class="line">[root@localhost /]# cdnet</div><div class="line">-bash: cdnet: command not found</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h3><ul>
+<li>硬件时钟：clock</li>
+<li>系统时间：date</li>
+<li>设置系统时间：date 011517032019.00</li>
+<li>同步系统时间到硬件时间：clock -w</li>
+<li>从服务器同步：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ntpdate 172.16.0.1 //server</div><div class="line">vi /etc/ntp.conf</div><div class="line">server 172.16.0.1 iburst</div><div class="line">service ntpd start</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="简单命令"><a href="#简单命令" class="headerlink" title="简单命令"></a>简单命令</h3><ul>
+<li>关机: halt,poweroff</li>
+<li>重启: reboot</li>
+<li>关机或重启:shutdown<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">-r:reboot</div><div class="line">-h:halt</div><div class="line">-c:cancel</div><div class="line">TIME:无指定，默认相当于+1</div><div class="line">     now</div><div class="line">     +m:几分钟后</div><div class="line">     hh:mm ；精确到具体时间</div><div class="line"></div><div class="line">* 显示字符: echo</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>显示变量:echo $VAR_NAMR<br>原样输出:echo ‘name’ //单引号<br>```</p>
 
       
     </div>
@@ -430,7 +511,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag"># android</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -443,8 +524,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/20/搭建hexo博客（二）准备工作/" rel="next" title="搭建hexo博客（二）准备工作">
-                <i class="fa fa-chevron-left"></i> 搭建hexo博客（二）准备工作
+              <a href="/2019/02/10/Dagger2（五）Android中的扩展使用/" rel="next" title="Dagger2（五）Android中的扩展使用">
+                <i class="fa fa-chevron-left"></i> Dagger2（五）Android中的扩展使用
               </a>
             
           </div>
@@ -452,10 +533,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/28/Android自定义控件之旅（一）滑动开关/" rel="prev" title="Android自定义控件之旅（一）滑动开关">
-                Android自定义控件之旅（一）滑动开关 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,8 +563,8 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/"
-           data-title="深入理解 scrollTo()、scrollBy()、getScrollX()" data-url="http://forevercoder.com/2015/12/24/深入理解-scrollTo-、scrollBy-、getScrollX/">
+      <div class="ds-thread" data-thread-key="2019/02/11/Linux基本命令-1/"
+           data-title="Linux基本命令_1" data-url="http://forevercoder.com/2019/02/11/Linux基本命令-1/">
       </div>
     </div>
 
@@ -594,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、废话先说"><span class="nav-number">1.</span> <span class="nav-text">一、废话先说</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、测试界面"><span class="nav-number">2.</span> <span class="nav-text">二、测试界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、详细讲解"><span class="nav-number">3.</span> <span class="nav-text">三、详细讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、scrollTo"><span class="nav-number">3.1.</span> <span class="nav-text">1、scrollTo()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、scrollBy"><span class="nav-number">3.2.</span> <span class="nav-text">2、scrollBy()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、getScrollX-；-getScrollY"><span class="nav-number">3.3.</span> <span class="nav-text">3、getScrollX()； getScrollY()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#切换终端"><span class="nav-number">1.</span> <span class="nav-text">切换终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令提示符"><span class="nav-number">2.</span> <span class="nav-text">命令提示符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用shell-linux命令解释器"><span class="nav-number">3.</span> <span class="nav-text">使用shell (linux命令解释器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件信息"><span class="nav-number">4.</span> <span class="nav-text">硬件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行命令"><span class="nav-number">5.</span> <span class="nav-text">执行命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash缓存表"><span class="nav-number">6.</span> <span class="nav-text">Hash缓存表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令别名"><span class="nav-number">7.</span> <span class="nav-text">命令别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期和时间"><span class="nav-number">8.</span> <span class="nav-text">日期和时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单命令"><span class="nav-number">9.</span> <span class="nav-text">简单命令</span></a></li></ol></div>
             
 
           </div>
