@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://forevercoder.com/2019/02/10/Dagger2（五）Android中的扩展使用/index.html">
 <meta property="og:site_name" content="ForeverCoder&#39;s Blog">
 <meta property="og:description" content="在Android平台上使用Dagger的一个主要的不同是，很多类的实例化依赖于操作系统本身，像是Activity和Fragment，但是Dagger最理想的工作方式是它能够构造所有需要注入的类的实例。所以，你必须在它们（Activity、Fragment等）的生命周期中进行成员的注入。很多类看上去跟下面类似：  12345678910111213141516public class Frombu">
-<meta property="og:updated_time" content="2019-02-10T07:45:28.642Z">
+<meta property="og:updated_time" content="2019-02-11T08:12:33.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger2（五）Android中的扩展使用">
 <meta name="twitter:description" content="在Android平台上使用Dagger的一个主要的不同是，很多类的实例化依赖于操作系统本身，像是Activity和Fragment，但是Dagger最理想的工作方式是它能够构造所有需要注入的类的实例。所以，你必须在它们（Activity、Fragment等）的生命周期中进行成员的注入。很多类看上去跟下面类似：  12345678910111213141516public class Frombu">
@@ -393,6 +393,7 @@
 </ol>
 <p>dagger.android 可以用来简化以上步骤。</p>
 <h4 id="build-gradle添加依赖"><a href="#build-gradle添加依赖" class="headerlink" title="build.gradle添加依赖:"></a>build.gradle添加依赖:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">implementation &apos;com.google.dagger:dagger-android:2.20&apos;</div><div class="line">implementation &apos;com.google.dagger:dagger-android-support:2.20&apos;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="Activity的注入"><a href="#Activity的注入" class="headerlink" title="Activity的注入"></a>Activity的注入</h4><ol>
 <li>在你的Application Component中加入AndroidInjectionModule模块，以提供所有基本类型的绑定。</li>
 </ol>

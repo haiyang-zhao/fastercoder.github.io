@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://forevercoder.com/2019/02/10/Guice/index.html">
 <meta property="og:site_name" content="ForeverCoder&#39;s Blog">
 <meta property="og:description" content="SOLID Single responsibility   单一职责 a class should have only a single responsibility   Open/closed  开闭原则 software entities (classes, modules, functions, etc.) should be open for extension, but closed f">
-<meta property="og:updated_time" content="2019-02-10T07:35:39.368Z">
+<meta property="og:updated_time" content="2019-02-11T08:13:12.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Guice">
 <meta name="twitter:description" content="SOLID Single responsibility   单一职责 a class should have only a single responsibility   Open/closed  开闭原则 software entities (classes, modules, functions, etc.) should be open for extension, but closed f">
@@ -404,9 +404,11 @@
 <p>Guice (pronounced ‘juice’) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google.</p>
 </blockquote>
 <h4 id="Bindings"><a href="#Bindings" class="headerlink" title="Bindings"></a>Bindings</h4><ul>
-<li><p>Linked Binding</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">    bind(Printer.class).to(PdfPrinter.class);</div><div class="line">    bind(PdfPrinter.class).to(ColorPdfPrinter.class);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>Linked Binding  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">()</span> </span>&#123;</div><div class="line">    bind(Printer.class).to(PdfPrinter.class);</div><div class="line">    bind(PdfPrinter.class).to(ColorPdfPrinter.class);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>BindingAnnotations</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@BindingAnnotation</span></div><div class="line"><span class="meta">@Target</span>(&#123;FIELD, PARAMETER, METHOD&#125;)</div><div class="line"><span class="meta">@Retention</span>(RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Alipay &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bind(Pay.class)</div><div class="line">.annotatedWith(Alipay.class)</div><div class="line">.to(AlipayImpl.class);</div></pre></td></tr></table></figure>
