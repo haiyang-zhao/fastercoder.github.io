@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://forevercoder.com/2019/02/10/Dagger2（三）Subcomponents/index.html">
 <meta property="og:site_name" content="ForeverCoder&#39;s Blog">
 <meta property="og:description" content="Component之间除了dependencies依赖关系外，还可以有继承关系。  依赖关系  一个 Component 依赖其他 Compoent 公开的依赖实例，用 Component 中的dependencies声明   继承关系  一个 Component 继承（也可以叫扩展）某 Component 提供更多的依赖，SubComponent 就是继承关系的体现。    依赖关系 depen">
-<meta property="og:updated_time" content="2019-02-10T07:42:03.497Z">
+<meta property="og:updated_time" content="2019-02-11T08:16:36.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger2（三）Subcomponents">
 <meta name="twitter:description" content="Component之间除了dependencies依赖关系外，还可以有继承关系。  依赖关系  一个 Component 依赖其他 Compoent 公开的依赖实例，用 Component 中的dependencies声明   继承关系  一个 Component 继承（也可以叫扩展）某 Component 提供更多的依赖，SubComponent 就是继承关系的体现。    依赖关系 depen">
@@ -399,6 +399,7 @@
 <li>MainComponent和AppComponent的Scope不能相同，因为他们的生命周期不同。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@Singleton</div><div class="line">@Component(modules = &#123;AppModule.class,</div><div class="line">        PrinterModule.class&#125;)</div><div class="line">public interface AppComponent &#123;</div><div class="line"></div><div class="line">    void inject(App app);</div><div class="line"></div><div class="line">    PrintService printService();</div><div class="line"></div><div class="line">&#125;</div><div class="line">//使用dependencies</div><div class="line">@ActivityScope</div><div class="line">@Component(dependencies = AppComponent.class)</div><div class="line">public interface MainComponent &#123;</div><div class="line">    void inject(MainActivity activity);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<a id="more"></a>
 <h4 id="继承关系-Subcomponents"><a href="#继承关系-Subcomponents" class="headerlink" title="继承关系 Subcomponents"></a>继承关系 Subcomponents</h4><h5 id="声明subcomponent"><a href="#声明subcomponent" class="headerlink" title="声明subcomponent"></a>声明subcomponent</h5><ul>
 <li>和Component类似，必须是abstract class 或者interface.使用@Subcomponent标注。</li>
 <li>Subcomponent和parent component的Scope不能相同，所有用自定义Scope @ActivityScope</li>
